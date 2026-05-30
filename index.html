@@ -1,0 +1,2335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>Las Delicias De La Niña Maria</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+:root{
+  --wine:#7B1C2E; --wine-dark:#5c1221; --wine-light:#a53048; --wine-bg:#fce8ed;
+  --olive:#D4A843; --olive-dark:#b8891e;
+  --white:#ffffff; --light:#fff8f0; --gray:#777; --dark:#1e1e1e; --text:#555;
+  --border:#f0dce2; --shadow:0 8px 32px rgba(123,28,46,.15);
+  --butter:#C8A882; --butter-dark:#8B5E3C;
+  --pink:#F4A7B9; --pink-dark:#e07a96; --pink-light:#fde8ef;
+  --blue:#4A7AB5; --blue-dark:#2f5c94; --blue-light:#daeaf8;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+*,*:focus,*:active,*:focus-visible,*:focus-within{
+  outline:none !important;
+  outline-offset:0 !important;
+  box-shadow:none !important;
+  -webkit-tap-highlight-color:transparent !important;
+}
+/* Restaurar sombras decorativas que sí queremos */
+header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.1) !important;}
+.bev-card:hover .bev-img-wrap{box-shadow:0 16px 40px rgba(0,0,0,.12) !important;}
+.bev-img-wrap{box-shadow:0 4px 18px rgba(0,0,0,.07) !important;}
+.prod-modal-box{box-shadow:0 30px 80px rgba(123,28,46,.22) !important;}
+.prod-modal-close{box-shadow:0 2px 10px rgba(0,0,0,.15) !important;}
+.testi-avatar{box-shadow:0 6px 20px rgba(123,28,46,.22) !important;}
+.up-img-wrap img{box-shadow:0 8px 32px rgba(123,28,46,.15) !important;}
+.blog-card:hover{box-shadow:0 8px 32px rgba(123,28,46,.15) !important;}
+.deal-form{box-shadow:0 8px 28px rgba(0,0,0,.22) !important;}
+.deal-img-card{box-shadow:0 8px 30px rgba(0,0,0,.25) !important;}
+.deal-img-card:hover{box-shadow:0 20px 50px rgba(0,0,0,.35) !important;}
+html{scroll-behavior:smooth;}
+/* Compensar el header fijo al hacer scroll a secciones con id */
+section[id]{scroll-margin-top:80px;}
+body{font-family:'Poppins',sans-serif;color:var(--text);background:#fff;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;}
+ 
+/* ── Cursive ── */
+.cursive-label{
+  font-family:'Dancing Script',cursive;
+  font-size:1.4rem; color:var(--blue);
+  display:block; margin-bottom:6px;
+}
+h1.hero-title{font-family:'Dancing Script',cursive;font-weight:700;}
+h2.sec-title{font-family:'Cormorant Garamond',serif;font-weight:600;}
+ 
+/* ── PRELOADER ── */
+#preloader{
+  position:fixed;inset:0;background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  z-index:9999;transition:opacity .4s,visibility .4s;
+  pointer-events:none;
+}
+#preloader:not(.hidden){ pointer-events:all; }
+#preloader.hidden{opacity:0;visibility:hidden;}
+.pre-logo{
+  font-family:'Dancing Script',cursive;font-size:3.2rem;color:var(--wine);
+  opacity:0;transition:opacity 0.25s ease;
+}
+#preloader.fonts-ready .pre-logo{opacity:1;}
+ 
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;left:0;right:0;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
+  z-index:1000;transition:box-shadow .3s;
+}
+header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.1);}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:15px 60px;max-width:1400px;margin:0 auto;
+}
+.logo{font-family:'Dancing Script',cursive;font-size:2.3rem;font-weight:700;color:var(--dark);}
+nav{display:flex;align-items:center;gap:2px;}
+.ni{position:relative;}
+.ni>a{
+  padding:8px 14px;font-size:.9rem;font-weight:500;color:var(--dark);
+  border-radius:6px;transition:color .2s;display:flex;align-items:center;gap:5px;white-space:nowrap;
+}
+.ni>a:hover{color:var(--wine);}
+.ni>a i{font-size:.65rem;}
+.dd{
+  position:absolute;top:calc(100% + 10px);left:0;
+  background:#fff;border-radius:10px;box-shadow:0 15px 50px rgba(0,0,0,.13);
+  min-width:190px;padding:8px 0;
+  opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .2s;
+  border-top:3px solid var(--wine);
+}
+.ni:hover .dd{opacity:1;visibility:visible;transform:translateY(0);}
+.dd a{display:block;padding:9px 20px;font-size:.85rem;font-weight:500;color:var(--text);transition:color .2s,background .2s;}
+.dd a:hover{color:var(--wine);background:var(--wine-bg);}
+.has-sub{position:relative;}
+.has-sub .sub-dd{
+  position:absolute;left:100%;top:0;
+  background:#fff;border-radius:10px;box-shadow:0 15px 50px rgba(0,0,0,.13);
+  min-width:185px;padding:8px 0;
+  opacity:0;visibility:hidden;transform:translateX(-8px);transition:all .2s;
+  border-top:3px solid var(--wine);
+}
+.has-sub:hover .sub-dd{opacity:1;visibility:visible;transform:translateX(0);}
+.hact{display:flex;align-items:center;gap:10px;}
+.ibtn{
+  width:38px;height:38px;border:none;background:none;cursor:pointer;
+  font-size:1rem;color:var(--dark);border-radius:50%;
+  transition:background .2s,color .2s;display:flex;align-items:center;justify-content:center;
+}
+.ibtn:hover{background:var(--wine-bg);color:var(--wine);}
+.mob-btn{display:none;background:none;border:none;cursor:pointer;font-size:1.5rem;color:var(--dark);}
+ 
+/* ── BTN ── */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  height:50px;padding:0 30px;border-radius:30px;
+  font-weight:800;font-size:.9rem;cursor:pointer;
+  font-family:'Poppins',sans-serif;white-space:nowrap;
+  position:relative;background-color:var(--wine);
+  border:2px solid var(--wine);overflow:hidden;
+  color:#fff;transition:all .5s ease-in-out;
+  letter-spacing:2px;text-decoration:none;
+  vertical-align:middle;
+}
+.btn span{z-index:1;position:relative;}
+.btn::after{
+  content:'';position:absolute;left:0;top:0;
+  transition:all .5s ease-in-out;
+  background-color:#fff;border-radius:30px;
+  visibility:hidden;height:10px;width:10px;z-index:0;
+}
+.btn:hover{
+  color:var(--wine);border-color:var(--wine);
+}
+.btn:hover::after{
+  visibility:visible;
+  transform:scale(100) translateX(2px);
+}
+ 
+/* Pill button — mismo estilo */
+.pill-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:fit-content;
+  height:50px;padding:0 36px;border-radius:30px;
+  font-weight:800;font-size:.9rem;cursor:pointer;
+  font-family:'Poppins',sans-serif;white-space:nowrap;
+  position:relative;background-color:var(--wine);
+  border:2px solid var(--wine);overflow:hidden;
+  color:#fff;transition:all .5s ease-in-out;
+  letter-spacing:2px;text-decoration:none;
+}
+.pill-btn::after{
+  content:'';position:absolute;left:0;top:0;
+  transition:all .5s ease-in-out;
+  background-color:#fff;border-radius:30px;
+  visibility:hidden;height:10px;width:10px;z-index:0;
+  display:block;
+}
+.pill-btn:hover{
+  color:var(--wine);border-color:var(--wine);
+}
+.pill-btn:hover::after{
+  visibility:visible;
+  transform:scale(100) translateX(2px);
+}
+.pill-btn .arrow-circle{display:none;}
+.pill-circle{display:none;}
+.pill-text{display:none;}
+ 
+/* ── HERO ── */
+.hero{
+  margin-top:72px;position:relative;overflow:hidden;
+  height:calc(100vh - 72px);min-height:560px;max-height:780px;
+}
+.slides{display:flex;height:100%;transition:transform .75s cubic-bezier(.77,0,.175,1);}
+.slide{min-width:100%;height:100%;display:flex;align-items:center;position:relative;overflow:hidden;}
+.slide-1,
+.slide-2,
+.slide-3{
+  position:relative;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  overflow:hidden;
+}
+ 
+/* Overlay elegante oscuro */
+.slide-1::before,
+.slide-2::before,
+.slide-3::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  z-index:1;
+}
+ 
+/* Todo el contenido arriba del overlay */
+.slide-content,
+.slide-image{
+  position:relative;
+  z-index:2;
+}
+ 
+/* Fondo panes */
+.slide-1{
+  background-image:
+  url('imagenes/portada.png');
+  background-position: center 30%;
+}
+ 
+/* Fondo café */
+.slide-2{
+  background-image:
+  url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop');
+}
+ 
+/* Fondo tortas */
+.slide-3{
+  background-image:
+  url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1600&auto=format&fit=crop');
+}
+/* White wave at bottom */
+.slide::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;height:110px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 110' preserveAspectRatio='none'%3E%3Cpath fill='%23ffffff' d='M0,70 C400,115 1040,15 1440,72 L1440,110 L0,110 Z'/%3E%3C/svg%3E") no-repeat bottom;
+  background-size:100% 100%;z-index:3;pointer-events:none;
+}
+.slide-content{flex:0 0 100%;padding:60px 120px;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;}
+h1.hero-title{
+  font-size:clamp(4.8rem,9vw,8rem);line-height:1.0;
+  color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.15);margin-bottom:22px;
+}
+.hero-p{font-size:1rem;color:rgba(255,255,255,.92);max-width:440px;margin-bottom:40px;line-height:1.8;}
+.slide-image{
+  flex:0 0 50%;display:flex;align-items:center;justify-content:center;
+  padding:20px 50px 120px 20px;z-index:2;
+}
+.slide-image img{
+  max-height:500px;max-width:100%;object-fit:contain;width:100%;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,.22));
+  animation:float 3.5s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+ 
+/* Orange maple leaf SVG decoration top-right */
+.deco-leaf{
+  position:absolute;top:-10px;right:-15px;
+  width:200px;opacity:.55;z-index:1;transform:rotate(-10deg);pointer-events:none;
+}
+/* Fruit (strawberry) bottom-left */
+.deco-fruit{
+  position:absolute;bottom:100px;left:25px;
+  width:155px;z-index:2;
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,.22));
+  animation:float 4s ease-in-out infinite .5s;
+}
+ 
+/* Slide counter */
+.slide-counter{
+  display:flex;align-items:center;gap:10px;
+  font-size:1rem;font-weight:600;color:rgba(255,255,255,.7);z-index:4;
+  margin-top:22px;
+}
+.slide-counter .act{color:#fff;font-size:1.3rem;}
+.slide-counter .sep{opacity:.4;}
+ 
+/* Arrows */
+.sarrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:50px;height:50px;
+  background:rgba(255,255,255,.18);backdrop-filter:blur(6px);
+  border:1.5px solid rgba(255,255,255,.5);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:5;font-size:.95rem;color:#fff;transition:all .3s;
+}
+.sarrow:hover{background:rgba(255,255,255,.32);}
+.sp{left:24px;}.sn{right:24px;}
+ 
+/* ── SECTION COMMONS ── */
+section{padding:90px 0;}
+.container{max-width:1200px;margin:0 auto;padding:0 30px;}
+.text-center{text-align:center;}
+.sec-desc{color:var(--gray);line-height:1.8;max-width:630px;}
+.text-center .sec-desc{margin:0 auto;}
+.sub-label{font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:8px;}
+/* Extra accent colors */
+.sec-title-line{background:linear-gradient(90deg,var(--wine),var(--pink)) !important;}
+.ornament i{color:var(--butter-dark) !important;}
+.ornament::before,.ornament::after{background:var(--butter-dark) !important;}
+/* Ornament line under titles */
+.ornament{
+  display:inline-flex;align-items:center;gap:8px;margin-top:10px;
+}
+.ornament::before,.ornament::after{content:'';width:40px;height:1px;background:var(--butter-dark);}
+.ornament i{color:var(--butter-dark);font-size:.7rem;}
+ 
+/* ── FRESH JUICE ── */
+.fresh-juice{background:#fff;}
+.juice-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.juice-image img{width:100%;object-fit:contain;border-radius:0;box-shadow:none;filter:drop-shadow(0 12px 30px rgba(114,47,55,.13));}
+ 
+/* ── BEVERAGES ── */
+.beverages{background:#fff;}
+.bev-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:50px;
+}
+/* Clean card: large image + text below, NO dark overlay */
+.bev-card{
+  cursor:pointer;transition:transform .3s;text-align:center;
+}
+.ver-mas{ display:none !important; }
+.bev-card:hover{transform:translateY(-8px);}
+.bev-img-wrap{
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 4px 18px rgba(0,0,0,.07);
+  transition:box-shadow .3s;
+}
+.bev-card:hover .bev-img-wrap{box-shadow:0 16px 40px rgba(0,0,0,.12);}
+.bev-img-wrap img{
+  width:100%;aspect-ratio:3/4;object-fit:cover;
+  display:block;transition:transform .5s;
+}
+.bev-card:hover .bev-img-wrap img{transform:scale(1.05);}
+.bev-body{padding:16px 4px 4px;}
+.bev-body h6{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:600;color:var(--dark);margin-bottom:4px;
+}
+.bev-body span{font-size:.82rem;color:var(--gray);}
+.bev-cta{text-align:center;margin-top:50px;}
+ 
+/* ── DEALS ── */
+.deals{
+  background:linear-gradient(135deg,var(--wine) 0%,#a53048 50%,#c96080 100%);
+  color:#fff;text-align:center;padding:80px 0;position:relative;overflow:hidden;
+}
+.deals::before,.deals::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.04);}
+.deals::before{width:600px;height:600px;top:-250px;left:-200px;}
+.deals::after{width:400px;height:400px;bottom:-180px;right:-100px;}
+.deal-badge{
+  display:inline-block;background:rgba(245,230,163,.25);color:var(--butter);
+  font-size:.77rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 18px;border-radius:50px;margin-bottom:16px;
+}
+.deals .sec-title{color:#fff;}
+.deals p{color:rgba(255,255,255,.8);margin:14px auto 36px;max-width:500px;line-height:1.8;}
+.deal-form{
+  display:flex;max-width:460px;margin:0 auto;
+  background:#fff;border-radius:50px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.22);
+}
+.deal-form input{flex:1;border:none;outline:none;padding:14px 22px;font-size:.9rem;font-family:'Poppins',sans-serif;}
+.deal-form button{
+  background:var(--wine);color:#fff;border:none;
+  padding:14px 24px;font-weight:600;font-size:.9rem;
+  cursor:pointer;font-family:'Poppins',sans-serif;transition:background .2s;
+}
+.deal-form button:hover{background:var(--wine-dark);}
+ 
+/* ── DEALS CARDS CON IMAGEN DE FONDO ── */
+.deals-cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-top:44px;
+  position:relative;
+  z-index:2;
+}
+.deal-img-card{
+  border-radius:20px;overflow:hidden;
+  position:relative;height:220px;cursor:pointer;
+  box-shadow:0 8px 30px rgba(0,0,0,.25);
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+.deal-img-card:hover{
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+.deal-img-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .5s ease;
+  display:block;
+}
+.deal-img-card:hover img{transform:scale(1.08);}
+.deal-img-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.15) 55%, transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:20px 18px;
+}
+.deal-img-card-overlay h4{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:600;color:#fff;
+  margin-bottom:4px;line-height:1.25;
+}
+.deal-img-card-overlay span{
+  font-size:.82rem;color:rgba(255,255,255,.8);
+  font-weight:500;
+}
+.deal-img-tag{
+  position:absolute;top:14px;right:14px;
+  background:var(--butter);color:#3a2000;
+  font-size:.7rem;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;padding:4px 12px;border-radius:50px;
+}
+@media(max-width:900px){
+  .deals-cards-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:540px){
+  .deals-cards-grid{grid-template-columns:1fr;}
+  .deal-img-card{height:180px;}
+}
+ 
+/* ── RECIPE ── */
+.recipe{background:var(--butter-light);}
+.recipe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:50px;}
+.recipe-col,.recipe-col-r{display:contents;}
+.recipe-mid{display:none;}
+.recipe-item{
+  cursor:pointer;transition:transform .3s;text-align:center;
+  display:flex;flex-direction:column;align-items:stretch;
+}
+.recipe-item:hover{transform:translateY(-8px);}
+.recipe-item-img{
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 4px 18px rgba(0,0,0,.07);
+  transition:box-shadow .3s;
+}
+.recipe-item:hover .recipe-item-img{box-shadow:0 16px 40px rgba(0,0,0,.12);}
+.recipe-item-img img{
+  width:100%;aspect-ratio:3/4;object-fit:cover;
+  display:block;transition:transform .5s;border-radius:0;border:none;
+  height:auto;
+}
+.recipe-item:hover .recipe-item-img img{transform:scale(1.05);}
+.recipe-item-body{padding:16px 4px 4px;text-align:center;}
+.recipe-item-body h6{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:600;color:var(--dark);margin-bottom:4px;
+}
+.recipe-item-body p{font-size:.82rem;color:var(--gray);line-height:1.5;margin-bottom:6px;}
+.recipe-cta{text-align:center;margin-top:50px;}
+.recipe-item h6{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:4px;}
+.recipe-item p{font-size:.8rem;color:var(--gray);line-height:1.5;}
+.recipe-mid{display:flex;align-items:center;justify-content:center;padding:20px;}
+.recipe-mid img{max-width:260px;filter:drop-shadow(0 15px 28px rgba(114,47,55,.18));animation:float 3.5s ease-in-out infinite;}
+ 
+/* ── UPCOMING ── */
+.upcoming{background:#fff;}
+.up-inner{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.up-img-wrap{position:relative;}
+.up-img-wrap img{border-radius:22px;width:100%;object-fit:cover;box-shadow:var(--shadow);}
+.up-badge{
+  position:absolute;bottom:-18px;left:-18px;
+  background:var(--wine);color:#fff;padding:18px 22px;border-radius:14px;box-shadow:var(--shadow);
+}
+.up-badge .big{font-size:2rem;font-weight:700;display:block;}
+.up-badge .small{font-size:.78rem;opacity:.85;}
+ 
+/* ── TESTIMONIALS ── */
+.testimonials{background:var(--blue-light);}
+.testi-wrap{overflow:hidden;margin-top:48px;}
+.testi-track{display:flex;transition:transform .6s cubic-bezier(.77,0,.175,1);}
+.testi-card{min-width:100%;text-align:center;padding:0 80px 40px;}
+.testi-avatar{width:86px;height:86px;border-radius:50%;object-fit:cover;border:4px solid var(--wine);margin:0 auto 16px;display:block;box-shadow:0 6px 20px rgba(123,28,46,.22);}
+.testi-stars{color:var(--butter-dark);font-size:1.1rem;margin-bottom:14px;}
+.testi-card blockquote{font-size:1rem;color:var(--text);line-height:1.9;font-style:italic;max-width:640px;margin:0 auto 16px;}
+.testi-card cite{font-style:normal;font-weight:600;color:var(--wine);}
+.testi-dots{display:flex;justify-content:center;gap:10px;margin-top:26px;}
+.tdot{width:10px;height:10px;border-radius:50%;background:rgba(74,122,181,.25);cursor:pointer;border:none;transition:all .3s;}
+.tdot.active{background:var(--blue);transform:scale(1.3);}
+ 
+/* ── BLOG ── */
+.blog{background:#fff;}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px;}
+.blog-card{border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);transition:transform .3s,box-shadow .3s;background:#fff;}
+.blog-card:hover{transform:translateY(-7px);box-shadow:var(--shadow);}
+.blog-img{position:relative;overflow:hidden;}
+.blog-img img{width:100%;height:215px;object-fit:cover;transition:transform .5s;}
+.blog-card:hover .blog-img img{transform:scale(1.05);}
+.blog-tag{position:absolute;top:13px;left:13px;background:var(--wine);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:50px;}
+.blog-body{padding:22px;}
+.blog-meta{display:flex;gap:14px;font-size:.77rem;color:var(--gray);margin-bottom:10px;}
+.blog-meta i{color:var(--wine);}
+.blog-body h6{font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1.5;margin-bottom:13px;color:var(--dark);transition:color .2s;}
+.blog-card:hover .blog-body h6{color:var(--wine);}
+.blog-more{font-size:.85rem;font-weight:600;color:var(--wine);display:flex;align-items:center;gap:6px;transition:gap .2s;}
+.blog-card:hover .blog-more{gap:10px;}
+ 
+/* ── GALLERY ── */
+.gallery{background:var(--pink-light);padding:55px 0;overflow:hidden;}
+.gal-track{
+  display:flex;gap:14px;
+  animation:scrollG 22s linear infinite;width:max-content;
+}
+.gal-track:hover{animation-play-state:paused;}
+.gal-track img{width:215px;height:155px;object-fit:cover;border-radius:12px;flex-shrink:0;transition:transform .3s;}
+.gal-track img:hover{transform:scale(1.05);}
+@keyframes scrollG{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+ 
+/* ── FOOTER ── */
+footer{background:#2a0a12;color:rgba(255,255,255,.72);}
+.footer-top{padding:65px 0 46px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;}
+.f-logo{font-family:'Dancing Script',cursive;font-size:2.2rem;font-weight:700;color:#fff;margin-bottom:14px;display:block;}
+.f-about{line-height:1.8;font-size:.87rem;margin-bottom:22px;}
+.f-social{display:flex;gap:9px;}
+.f-social a{width:37px;height:37px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:.88rem;transition:background .2s,color .2s;}
+.f-social a:hover{background:var(--wine);color:#fff;}
+.f-col h5{font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:700;color:#fff;margin-bottom:17px;text-transform:uppercase;letter-spacing:1px;}
+.f-col ul{list-style:none;}
+.f-col ul li{margin-bottom:9px;}
+.f-col ul li a{font-size:.86rem;color:rgba(255,255,255,.6);transition:color .2s,padding-left .2s;}
+.f-col ul li a:hover{color:var(--wine-light);padding-left:5px;}
+.f-contact{display:flex;align-items:flex-start;gap:11px;margin-bottom:12px;font-size:.86rem;}
+.f-contact i{color:var(--wine-light);margin-top:3px;flex-shrink:0;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:20px 0;text-align:center;font-size:.81rem;color:rgba(255,255,255,.4);}
+.footer-bottom span{color:var(--wine-light);}
+ 
+/* ── SEARCH INLINE ── */
+.search-wrap{
+  display:flex;align-items:center;position:relative;
+}
+.search-input-bar{
+  width:0;opacity:0;overflow:hidden;
+  transition:width .35s cubic-bezier(.4,0,.2,1), opacity .25s;
+  display:flex;align-items:center;
+  border-bottom:2px solid var(--wine);
+  margin-right:6px;
+}
+.search-input-bar.open{
+  width:180px;opacity:1;
+}
+.search-input-bar input{
+  border:none;outline:none;background:transparent;
+  font-family:'Poppins',sans-serif;font-size:.88rem;
+  color:var(--dark);padding:4px 6px;width:100%;
+}
+.search-input-bar input::placeholder{color:#aaa;}
+@media(max-width:600px){
+  .search-input-bar.open{width:130px;}
+}
+ 
+/* ── SEARCH RESULTS DROPDOWN ── */
+#searchResults,#mnavSearchResults{
+  position:absolute;top:calc(100% + 14px);right:0;
+  width:340px;
+  background:#fff;border-radius:0;
+  box-shadow:0 16px 50px rgba(123,28,46,.18) !important;
+  border:1px solid var(--border);
+  overflow:hidden;
+  opacity:0;visibility:hidden;
+  transform:translateY(-8px);
+  transition:opacity .25s,visibility .25s,transform .25s;
+  z-index:2000;
+  max-height:420px;
+  overflow-y:scroll;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+#searchResults::-webkit-scrollbar,
+#mnavSearchResults::-webkit-scrollbar{ display:none; }
+#searchResults.show,#mnavSearchResults.show{
+  opacity:1;visibility:visible;transform:translateY(0);
+}
+/* resultados en móvil: posición fija encima del mnav */
+#mnavSearchResults{
+  position:fixed;top:130px;left:0;right:0;
+  width:100%;transform:none;
+  box-shadow:0 8px 28px rgba(0,0,0,.18) !important;
+  margin-top:0;
+  border-radius:0;
+  z-index:99999;
+  max-height:60vh;
+}
+#mnavSearchResults.show{ transform:none; }
+.sr-item{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 16px;cursor:pointer;
+  border-bottom:1px solid var(--border);
+  transition:background .15s;
+}
+.sr-item:last-child{border-bottom:none;}
+.sr-item:hover{background:#f4f4f4;}
+.sr-item img{
+  width:58px;height:58px;object-fit:cover;
+  border-radius:10px;flex-shrink:0;
+}
+.sr-item-info{display:flex;flex-direction:column;gap:3px;}
+.sr-item-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:600;color:var(--dark);line-height:1.2;
+}
+.sr-item-price{
+  font-size:.82rem;font-weight:600;color:var(--wine);
+}
+.sr-empty{
+  padding:22px 16px;text-align:center;
+  color:var(--gray);font-size:.88rem;
+}
+@media(max-width:600px){
+  #searchResults{width:calc(100vw - 32px);right:-8px;}
+}
+ 
+/* ── VER MÁS inline link ── */
+.ver-mas{
+  display:inline-block;margin-top:7px;
+  font-size:.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--wine);text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:border-color .2s,color .2s;
+}
+.ver-mas:hover{color:var(--wine-dark);border-bottom-color:var(--wine-dark);}
+ 
+/* ── WHATSAPP FLOTANTE ── */
+#whatsapp-float{
+  position:fixed;bottom:28px;right:28px;width:56px;height:56px;
+  background:#25D366;color:#fff;border-radius:50%;
+  font-size:1.7rem;cursor:pointer;
+  box-shadow:0 6px 24px rgba(37,211,102,.45);
+  opacity:1;visibility:visible;transition:all .3s;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;z-index:999;
+}
+#whatsapp-float:hover{background:#1ebe5d;transform:translateY(-3px) scale(1.08);box-shadow:0 10px 32px rgba(37,211,102,.55);}
+ 
+/* ── MOBILE NAV ── */
+.mnav{position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:9999;transform:translateX(-100%);transition:transform .4s cubic-bezier(.77,0,.175,1);padding:72px 26px 26px;overflow-y:auto;}
+.mnav.open{transform:translateX(0);}
+.mnav-close{position:absolute;top:17px;right:17px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--dark);}
+.mnav ul{list-style:none;}
+.mnav ul li{border-bottom:1px solid var(--border);}
+.mnav ul li a{display:block;padding:13px 0;font-size:1rem;font-weight:600;color:var(--dark);transition:color .2s;}
+.mnav ul li a:hover{color:var(--wine);}
+ 
+/* Buscador dentro del menú móvil */
+.mnav-search{
+  display:flex;align-items:center;gap:10px;
+  border-bottom:2px solid var(--wine);
+  padding:10px 4px;
+  margin-bottom:18px;
+}
+.mnav-search-icon{color:var(--wine);font-size:1rem;flex-shrink:0;}
+.mnav-search input{
+  flex:1;border:none;outline:none;background:transparent;
+  font-family:'Poppins',sans-serif;font-size:.95rem;
+  color:var(--dark);padding:2px 0;
+}
+.mnav-search input::placeholder{color:#aaa;}
+ 
+/* Ocultar buscador del header en móvil */
+@media(max-width:1100px){
+  .search-wrap{display:none;}
+}
+ 
+/* ── SCROLL REVEAL ANIMATIONS ── */
+.reveal{
+  opacity:0;
+  transform:translateY(50px);
+  transition:opacity 1s cubic-bezier(.25,.8,.25,1), transform 1s cubic-bezier(.25,.8,.25,1);
+  will-change:opacity,transform;
+}
+.reveal.reveal-left{
+  transform:translateX(-55px);
+}
+.reveal.reveal-right{
+  transform:translateX(55px);
+}
+.reveal.reveal-scale{
+  transform:scale(.92) translateY(25px);
+}
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+ 
+/* Delay helpers */
+.d1{transition-delay:.1s}
+.d2{transition-delay:.22s}
+.d3{transition-delay:.34s}
+.d4{transition-delay:.46s}
+.d5{transition-delay:.58s}
+.d6{transition-delay:.7s}
+.d7{transition-delay:.82s}
+.d8{transition-delay:.94s}
+ 
+/* Línea animada bajo los títulos */
+.sec-title-line{
+  display:block;width:0;height:2px;
+  background:linear-gradient(90deg,var(--wine),var(--pink));
+  border-radius:2px;margin:10px auto 0;
+  transition:width 1s cubic-bezier(.25,.8,.25,1) .25s;
+}
+.visible ~ .sec-title-line,
+.sec-title-line.visible{width:60px;}
+ 
+/* ══════════════════════════════════════
+   MODAL BEBIDAS
+══════════════════════════════════════ */
+#bebidasModal{
+  position:fixed;inset:0;z-index:9000;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;
+  backdrop-filter:blur(0px);
+  -webkit-backdrop-filter:blur(0px);
+  transition:opacity .3s ease, visibility .3s ease, backdrop-filter .3s ease, -webkit-backdrop-filter .3s ease;
+  overscroll-behavior:contain;
+}
+#bebidasModal.open{
+  opacity:1;visibility:visible;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+.modal-backdrop{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.45);
+  cursor:pointer;
+}
+.modal-box{
+  position:relative;z-index:1;
+  background:#fff;border-radius:22px;
+  width:92%;max-width:900px;
+  max-height:88vh;overflow:hidden;
+  display:flex;flex-direction:column;
+  box-shadow:0 30px 80px rgba(123,28,46,.22);
+  transform:translateY(30px) scale(.97);
+  transition:transform .35s cubic-bezier(.25,.8,.25,1);
+  overscroll-behavior:contain;
+}
+#bebidasModal.open .modal-box{
+  transform:translateY(0) scale(1);
+}
+ 
+/* Encabezado del modal */
+.modal-header{
+  padding:28px 36px 20px;
+  flex-shrink:0;
+  text-align:center;
+  position:relative;
+}
+.modal-header .modal-cursive{
+  font-family:'Dancing Script',cursive;
+  font-size:1.5rem;color:var(--blue);
+  display:block;margin-bottom:4px;
+}
+.modal-header h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.4rem;font-weight:600;color:var(--dark);
+  line-height:1.15;
+}
+.modal-header .ornament{
+  margin-top:8px;justify-content:center;
+}
+.modal-close{
+  position:absolute;top:18px;right:18px;
+  width:36px;height:36px;border-radius:50%;
+  border:none;background:var(--wine-bg);
+  color:var(--wine);font-size:1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,color .2s;
+}
+.modal-close:hover{background:var(--wine);color:#fff;}
+ 
+/* Grilla de bebidas dentro del modal */
+.modal-body{
+  overflow-y:auto;
+  padding:30px 36px 36px;
+  flex:1;
+  background:#fff;
+  /* Evitar que el scroll se propague al body al llegar al límite */
+  overscroll-behavior:contain;
+  -ms-scroll-chaining:none;
+  /* Ocultar scrollbar visualmente pero mantener scroll */
+  scrollbar-width:none; /* Firefox */
+  -ms-overflow-style:none; /* IE/Edge */
+}
+.modal-body::-webkit-scrollbar{
+  display:none; /* Chrome/Safari */
+}
+.modal-bev-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+}
+@media(max-width:700px){
+  .modal-bev-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
+  .modal-box{border-radius:16px;}
+  .modal-header{padding:20px 20px 14px;}
+  .modal-header h2{font-size:1.8rem;}
+  .modal-body{padding:20px 16px 24px;}
+  .modal-header .modal-cursive{font-size:1.2rem;}
+}
+ 
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .header-inner{padding:14px 22px;}
+  nav{display:none;}
+  .mob-btn{display:block;}
+  .bev-grid{grid-template-columns:repeat(2,1fr);}
+  .slide-content{padding:40px 50px;}
+  h1.hero-title{font-size:clamp(3rem,6vw,5.5rem);}
+}
+@media(max-width:900px){
+  .slide-image{
+    display:flex;
+    flex:unset;
+    width:100%;
+    justify-content:center;
+    padding:0 20px 30px;
+  }
+  .slide-image img{
+    max-height:220px;
+    width:auto;
+    max-width:100%;
+  }
+  .slide{
+    flex-direction:column;
+    align-items:center;
+    height:auto;
+    padding-bottom:80px;
+  }
+  .slide-content{padding:34px 28px 10px;flex:unset;width:100%;}
+  .juice-grid,.up-inner{grid-template-columns:1fr;}
+  .recipe-grid{grid-template-columns:1fr;}
+  .recipe-mid{display:none;}
+  .blog-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  /* Header */
+  header{position:fixed;top:0;left:0;right:0;}
+  .header-inner{padding:12px 20px;}
+ 
+  /* Hero — pantalla completa en móvil */
+  .hero{
+    margin-top:66px;
+    height:calc(100dvh - 66px);
+    min-height:480px;
+    max-height:none;
+    overflow:hidden;
+    position:relative;
+  }
+  /* El contenedor de slides debe tener la misma altura que .hero */
+  .slides{
+    display:flex;
+    flex-wrap:nowrap;
+    height:100%;
+    width:100%;
+    overflow:visible;
+    transition:transform .75s cubic-bezier(.77,0,.175,1);
+  }
+ 
+  /* Cada slide: ancho y alto fijos para que el translateX funcione */
+  .slide{
+    min-width:100vw;
+    width:100vw;
+    height:100%;
+    flex-shrink:0;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    overflow:hidden;
+    display:flex;
+  }
+ 
+  /* Ola blanca al fondo */
+  .slide::after{
+    height:70px;
+  }
+ 
+  /* Contenido centrado verticalmente */
+  .slide-content{
+    flex:unset;
+    width:100%;
+    padding:0 28px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    z-index:4;
+  }
+ 
+  h1.hero-title{
+    font-size:clamp(3.2rem,18vw,5.5rem);
+    line-height:1.0;
+    margin-bottom:16px;
+    text-align:center;
+  }
+  .hero-p{
+    font-size:.9rem;
+    margin-bottom:28px;
+    max-width:100%;
+    text-align:center;
+    line-height:1.7;
+    color:rgba(255,255,255,.88);
+  }
+ 
+  /* Botón bien centrado */
+  .pill-btn{
+    height:46px;
+    padding:0 30px;
+    font-size:.85rem;
+    letter-spacing:1.5px;
+  }
+ 
+  /* Contador oculto */
+  .slide-counter{display:none;}
+ 
+  /* Flechas OCULTAS en móvil */
+  .sarrow{display:none !important;}
+ 
+  /* Decoraciones ocultas */
+  .deco-leaf{display:none;}
+  .deco-fruit{display:none;}
+ 
+  section{padding:55px 0;}
+  .bev-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
+ 
+  /* Secciones recipe en móvil: 2 columnas igual que panes */
+  .recipe-section .recipe-carousel-wrap{
+    overflow:visible;
+    width:100%;
+  }
+  .recipe-section .bev-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+    width:100%;
+    transform:none !important;
+    transition:none;
+  }
+  .recipe-section .bev-grid .bev-card{
+    min-width:unset;
+    width:100%;
+    flex-shrink:unset;
+    box-sizing:border-box;
+    padding:0;
+  }
+  .recipe-section .bev-img-wrap img{aspect-ratio:3/4;}
+  /* Ocultar los puntos del carrusel en móvil */
+  .recipe-carousel-dots{
+    display:none;
+  }
+ 
+  .blog-grid{grid-template-columns:1fr;}
+  .testi-card{padding:0 14px 26px;}
+  .footer-top{grid-template-columns:1fr;gap:24px;}
+  .deal-form{flex-direction:column;border-radius:12px;}
+  .deal-form input{border-radius:12px 12px 0 0;}
+  .deal-form button{border-radius:0 0 12px 12px;}
+}
+ 
+/* ══════════════════════════════════════
+   MODAL DETALLE PRODUCTO
+══════════════════════════════════════ */
+#productoModal{
+  position:fixed;inset:0;z-index:9500;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;
+  backdrop-filter:blur(0px);
+  -webkit-backdrop-filter:blur(0px);
+  transition:opacity .3s ease, visibility .3s ease,
+             backdrop-filter .3s ease, -webkit-backdrop-filter .3s ease;
+}
+#productoModal.open{
+  opacity:1;visibility:visible;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+#productoModal .modal-backdrop{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.45);
+  cursor:pointer;
+}
+.prod-modal-box{
+  position:relative;z-index:1;
+  background:#fff;
+  border-radius:22px;
+  width:92%;max-width:480px;
+  box-shadow:0 30px 80px rgba(123,28,46,.22);
+  transform:translateY(30px) scale(.97);
+  transition:transform .35s cubic-bezier(.25,.8,.25,1);
+  overflow:hidden;
+}
+#productoModal.open .prod-modal-box{
+  transform:translateY(0) scale(1);
+}
+.prod-modal-img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  display:block;
+}
+.prod-modal-body{
+  padding:24px 28px 30px;
+  background:#ffffff;
+  text-align:center;
+}
+.prod-modal-body h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.9rem;font-weight:600;color:var(--dark);
+  margin-bottom:10px;line-height:1.2;
+}
+.prod-modal-price{
+  font-family:'Poppins',sans-serif;
+  font-size:1.4rem;font-weight:700;
+  color:var(--wine);
+}
+.prod-modal-close{
+  position:absolute;top:12px;right:12px;
+  width:34px;height:34px;border-radius:50%;
+  border:none;background:rgba(255,255,255,.9);
+  color:var(--wine);font-size:.95rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+  transition:background .2s,color .2s;z-index:2;
+}
+.prod-modal-close:hover{background:var(--wine);color:#fff;}
+@media(max-width:600px){
+  .prod-modal-box{border-radius:16px;max-width:95%;}
+  .prod-modal-body h3{font-size:1.5rem;}
+  .prod-modal-price{font-size:1.2rem;}
+}
+ 
+/* Separador de sección dentro del modal */
+.bev-section-sep{
+  grid-column:1/-1;
+  display:flex;align-items:center;gap:12px;
+  margin:8px 0 4px;
+}
+.bev-section-sep-line{flex:1;height:1px;background:var(--border);}
+.bev-section-sep-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:600;
+  color:var(--wine);white-space:nowrap;
+}
+ 
+</style>
+</head>
+<body>
+ 
+<!-- PRELOADER -->
+<div id="preloader"><div class="pre-logo" style="display:inline-flex;align-items:center;gap:4px;line-height:1;"><em style="font-size:5.5rem;line-height:1;">L</em><span style="display:flex;flex-direction:column;justify-content:center;"><em style="font-size:3.2rem;line-height:1.1;display:block;margin-top:16px;margin-bottom:0;">as delicias</em><span style="font-family:'Poppins',sans-serif;font-style:normal;font-size:1.2rem;font-weight:400;display:block;line-height:1;margin-top:-7px;color:#000;">de La Niña Maria</span></span></div></div>
+ 
+<!-- MOBILE NAV -->
+<div class="mnav" id="mnav">
+  <button class="mnav-close" onclick="toggleMob()"><i class="fas fa-times"></i></button>
+  <!-- Buscador dentro del menú móvil -->
+  <div class="mnav-search">
+    <i class="fas fa-search mnav-search-icon"></i>
+    <input type="text" id="mnavSearchInput" placeholder="Buscar productos, recetas..." oninput="doSearch(this.value,'mnav')" autocomplete="off"/>
+  </div>
+  <div id="mnavSearchResults"></div>
+  <ul>
+    <li><a href="#inicio" onclick="toggleMob()">Inicio</a></li>
+    <li><a href="#bebidas" onclick="toggleMob()">Bebidas</a></li>
+    <li><a href="#menu" onclick="toggleMob()">Panes</a></li>
+    <li><a href="#galletas" onclick="toggleMob()">Galletas</a></li>
+    <li><a href="#pasteles" onclick="toggleMob()">Pasteles</a></li>
+    <li><a href="#postres" onclick="toggleMob()">Postres</a></li>
+    <li><a href="#antojos" onclick="toggleMob()">Antojos</a></li>
+    
+  </ul>
+</div>
+ 
+<!-- HEADER -->
+<header id="hdr">
+  <div class="header-inner">
+    <a href="#" class="logo" style="display:inline-flex;align-items:center;gap:10px;line-height:1;text-decoration:none;">
+  <img src="logo.png" alt="La Niña Maria" style="width:62px;height:62px;border-radius:50%;object-fit:cover;object-position:center 20%;border:2.5px solid var(--wine);box-shadow:0 4px 14px rgba(123,28,46,.22);flex-shrink:0;"/>
+  <span style="display:flex;flex-direction:column;justify-content:center;">
+    <span style="display:flex;align-items:baseline;line-height:1;gap:0;">
+      <em style="font-size:3.2rem;line-height:1;color:var(--wine);">L</em><em style="font-size:1.9rem;line-height:1.1;margin-top:10px;margin: auto; margin-left: 3px;color:var(--wine);">as delicias</em>
+    </span>
+    <span style="font-family:'Poppins',sans-serif;font-style:normal;font-size:0.78rem;font-weight:400;color:#000;display:block;line-height:1;margin-top:-5px;margin-left: 33px;margin-top: -13px;">de La Niña Maria</span>
+  </span>
+</a>
+    <nav>
+      <div class="ni">
+        <a href="#inicio">Inicio</a>
+      </div>
+      <div class="ni">
+        <a href="#bebidas">Bebidas</a>
+      </div>
+      <div class="ni">
+        <a href="#menu">Panes</a>
+      </div>
+      <div class="ni">
+        <a href="#galletas">Galletas</a>
+      </div>
+      <div class="ni">
+        <a href="#pasteles">Pasteles</a>
+      </div>
+      <div class="ni">
+        <a href="#postres">Postres</a>
+      </div>
+      <div class="ni">
+        <a href="#antojos">Antojos</a>
+      </div>
+      
+    </nav>
+    <div class="hact">
+      <div class="search-wrap">
+        <div class="search-input-bar" id="searchBar">
+          <input type="text" id="searchInput" placeholder="Buscar productos..." onkeydown="if(event.key==='Escape')closeS()" oninput="doSearch(this.value)" autocomplete="off"/>
+        </div>
+        <button class="ibtn" id="searchBtn" onclick="toggleS()" aria-label="Buscar"><i class="fas fa-search"></i></button>
+        <div id="searchResults"></div>
+      </div>
+      
+      <button class="mob-btn" onclick="toggleMob()"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+ 
+<!-- ════════ HERO ════════ -->
+<section class="hero" id="inicio" style="padding:0">
+  <div class="slides" id="slides">
+ 
+    <!-- SLIDE 1 -->
+    <div class="slide slide-1">
+      <div class="slide-content">
+        <h1 class="hero-title">Bienvenido<br>A La Panaderia</h1>
+        <p class="hero-p">Las Delicias de la Niña María ofrece productos para toda ocasión: PANES, PASTELES, HOJALDRES, FAST FOOD, PIZZA, POSTRES, TORTAS Y PONQUES.</p>
+        <a href="#" class="pill-btn">
+          <span style="position:relative;z-index:1">Proximamente</span>
+        </a>
+      </div>
+    </div>
+ 
+    <!-- SLIDE 2
+    <div class="slide slide-2">
+      <div class="slide-content">
+        <h1 class="hero-title">Fresh<br>Fruit Juice</h1>
+        <p class="hero-p">Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+        <a href="#" class="pill-btn">
+          <span style="position:relative;z-index:1">Buy Now</span>
+        </a>
+        <div class="slide-counter">
+          <span>01</span><span class="sep">/</span>
+          <span class="act">02</span><span class="sep">/</span><span>03</span>
+        </div>
+      </div>
+    </div>
+    -->
+ 
+    <!-- SLIDE 3 
+    <div class="slide slide-3">
+      <div class="slide-content">
+        <h1 class="hero-title">Tropical<br>Boba Tea</h1>
+        <p class="hero-p">Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+        <a href="#" class="pill-btn">
+          <span style="position:relative;z-index:1">Buy Now</span>
+        </a>
+        <div class="slide-counter">
+          <span>01</span><span class="sep">/</span>
+          <span>02</span><span class="sep">/</span>
+          <span class="act">03</span>
+        </div>
+      </div>
+    </div>
+    -->
+ 
+  </div>
+  <!-- Flechas ocultas mientras los slides 2 y 3 están comentados
+  <button class="sarrow sp" onclick="chSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+  <button class="sarrow sn" onclick="chSlide(1)"><i class="fas fa-chevron-right"></i></button>
+  -->
+</section>
+ 
+<!-- ════════ FRESH JUICE ════════ -->
+<section class="fresh-juice" id="bebidas">
+  <div class="container">
+    <div class="juice-grid">
+      <div class="juice-image reveal reveal-left">
+        <img src="https://preview.robertbiswas.com/php/foodily/images/resource/juice.png"
+             alt="Fresh Juice"
+             onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=80'"/>
+      </div>
+      <div class="reveal reveal-right">
+        <span class="cursive-label">Acompaña</span>
+        
+        <h2 class="sec-title" style="font-size:2.8rem;margin-bottom:18px">Los Productos <br>Con Una Bebida</h2>
+        <p class="sec-desc">Disfruta de nuestras bebidas naturales y bebidas Postobón, perfectas para acompañar tus comidas con sabores refrescantes y deliciosos para cualquier momento del día.</p>
+        <a onclick="openBebidasModal()" class="btn" style="margin-top:32px;cursor:pointer"><span>Ver Bebidas &nbsp;<i class="fas fa-arrow-right"></i></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ════════ BEVERAGES ════════ -->
+<section class="beverages" id="menu" style="padding-top:40px;padding-bottom:40px;">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="cursive-label">Nuestros</span>
+      <h2 class="sec-title" style="font-size:2.8rem">Deliciosos Panes</h2>
+      <div class="ornament"><i class="fas fa-seedling"></i></div>
+    </div>
+ 
+    <div class="bev-grid">
+      <div class="bev-card reveal d1">
+        <div class="bev-img-wrap">
+          <img src="imagenes/panes/pan masa madre.png" alt="Milkshake"
+               onerror="this.src='https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=400&q=80'"/>
+        </div>
+        <div class="bev-body"><h6>Pan masa madre tradicional</h6><span>$ 7.000</span><a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a></div>
+      </div>
+      <div class="bev-card reveal d2">
+        <div class="bev-img-wrap">
+          <img src="imagenes/panes/pan de avena con uvas.png" alt="Frappe"
+               onerror="this.src='https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80'"/>
+        </div>
+        <div class="bev-body"><h6>Pan de avena con uvas pasas</h6><span>$ 6.000</span><a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a></div>
+      </div>
+      <div class="bev-card reveal d3">
+        <div class="bev-img-wrap">
+          <img src="imagenes/panes/pan bañado en queso pequeño.png" alt="Boba Drinks"
+               onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80'"/>
+        </div>
+        <div class="bev-body"><h6>Pan bañado en queso</h6><span>$ 5.000</span></div>
+      </div>
+      <div class="bev-card reveal d4">
+        <div class="bev-img-wrap">
+          <img src="imagenes/panes/pan de bocadillo.png" alt="Mojito"
+               onerror="this.src='https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&q=80'"/>
+        </div>
+        <div class="bev-body"><h6>Pan de bocadillo pequeño</h6><span>$ 1.000</span><a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a></div>
+      </div>
+      <div class="bev-card reveal d5">
+        <div class="bev-img-wrap">
+          <img src="imagenes/panes/pan de coco.png" alt="Slushy"
+               onerror="this.src='https://images.unsplash.com/photo-1638176066614-f4e2e4e7fc68?w=400&q=80'"/>
+        </div>
+        <div class="bev-body"><h6>Pan de coco pequeño</h6><span>$ 1.000</span><a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a></div>
+      </div>
+      <div class="bev-card reveal d6">
+        <div class="bev-img-wrap">
+          <img src="imagenes/panes/Pan bañado en queso pequeño.png" alt="Slushy"
+               onerror="this.src='https://images.unsplash.com/photo-1638176066614-f4e2e4e7fc68?w=400&q=80'"/>
+        </div>
+        <div class="bev-body"><h6>Pan bañado en queso pequeño</h6><span>$ 1.000</span><a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a></div>
+      </div>
+      <div class="bev-card reveal d7">
+        <div class="bev-img-wrap">
+          <img src="imagenes/panes/tostadas.png" alt="Slushy"
+               onerror="this.src='https://images.unsplash.com/photo-1638176066614-f4e2e4e7fc68?w=400&q=80'"/>
+        </div>
+        <div class="bev-body"><h6>Paquete de tostadas</h6><span>$ 3.000</span><a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a></div>
+      </div>
+      <div class="bev-card reveal d7">
+        <div class="bev-img-wrap">
+          <img src="imagenes/panes/pan azucarado.png" alt="Slushy"
+               onerror="this.src='https://images.unsplash.com/photo-1638176066614-f4e2e4e7fc68?w=400&q=80'"/>
+        </div>
+        <div class="bev-body"><h6>Pan Azucarado</h6><span>$ 5.000</span><a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a></div>
+      </div>
+    </div>
+ 
+    <!--
+    <div class="bev-cta">
+      <a href="#" class="btn btn-wine"><span>View All Products &nbsp;<i class="fas fa-arrow-right"></i></span></a>
+    </div> -->
+  </div>
+</section>
+ 
+<!-- ════════ BIG DEALS ════════ -->
+<section class="deals">
+  <div class="container" style="position:relative;z-index:2">
+    
+    <h2 class="sec-title reveal d1" style="color:#fff;font-size:2.6rem">Refrigerios Para Toda Ocasión</h2>
+    <p>Disfruta de nuestros refrigerios y productos de panadería, preparados con ingredientes frescos y deliciosos para acompañar cualquier ocasión especial,<br> reunión o antojo del día.</p>
+ 
+  </div>
+</section>
+ 
+<!-- ════════ RECIPE ════════ -->
+<section class="recipe recipe-section" id="galletas">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="cursive-label">Nuestras</span>
+      <h2 class="sec-title" style="font-size:2.6rem">Deliciosas Galletas</h2>
+      <div class="ornament"><i class="fas fa-seedling"></i></div>
+    </div>
+    <div class="recipe-carousel-wrap">
+    <div class="bev-grid">
+      <div class="bev-card reveal d1">
+        <div class="bev-img-wrap">
+          <img src="imagenes/galletas/imagen1.png" alt="Pan Artesanal"/>
+        </div>
+        <div class="bev-body">
+          <h6>Galleta tradicional, rizadas, pandero, polvorosa</h6>
+          <span>$ 1.500 </span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d2">
+        <div class="bev-img-wrap">
+          <img src="imagenes/galletas/imagen2.png" alt="Torta de Chocolate"/>
+        </div>
+        <div class="bev-body">
+          <h6>Galleta de avena y uvas pasas o galleta de coco</h6>
+          <span>$ 2.000 </span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d3">
+        <div class="bev-img-wrap">
+          <img src="imagenes/galletas/imagen3.png" alt="Café Especial"/>
+        </div>
+        <div class="bev-body">
+          <h6>Galleta chips de chocolate, espolvorosa</h6>
+          <span>$ Por definir </span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d4">
+        <div class="bev-img-wrap">
+          <img src="imagenes/galletas/imagen4.png" alt="Croissant de Mantequilla"/>
+        </div>
+        <div class="bev-body">
+          <h6>Galleta avena, coco, pandero</h6>
+          <span>$ Por definir</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+    </div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- ══════════════ PASTELES ══════════════ -->
+<section class="recipe recipe-section" id="pasteles" style="padding-top:70px;padding-bottom:40px;background:#fff;">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="cursive-label">Nuestros</span>
+      <h2 class="sec-title" style="font-size:2.6rem">Deliciosos Pasteles</h2>
+      <div class="ornament"><i class="fas fa-seedling"></i></div>
+    </div>
+    <div class="recipe-carousel-wrap">
+    <div class="bev-grid">
+      <div class="bev-card reveal d1">
+        <div class="bev-img-wrap">
+          <img src="imagenes/pasteles/pastel de gloria de arequipe.png" alt="Pastel de Gloria de Arequipe"
+               onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80'"/>
+        </div>
+        <div class="bev-body">
+          <h6>Pastel de Gloria de Arequipe</h6>
+          <span>$ 3.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d2">
+        <div class="bev-img-wrap">
+          <img src="imagenes/pasteles/pastel gloria.png" alt="Pastel Gloria"
+               onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80'"/>
+        </div>
+        <div class="bev-body">
+          <h6>Pastel Gloria</h6>
+          <span>$ 3.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d3">
+        <div class="bev-img-wrap">
+          <img src="imagenes/pasteles/pastel horneado de pollo y champiñones.png" alt="Pastel Horneado de Pollo y Champiñones"
+               onerror="this.src='https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&q=80'"/>
+        </div>
+        <div class="bev-body">
+          <h6>Pastel Horneado de Pollo y Champiñones</h6>
+          <span>$ 6.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d4">
+        <div class="bev-img-wrap">
+          <img src="imagenes/pasteles/pastel horneado de solo pollo.png" alt="Pastel Horneado de Pollo"
+               onerror="this.src='https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&q=80'"/>
+        </div>
+        <div class="bev-body">
+          <h6>Pastel Horneado de Pollo</h6>
+          <span>$ 5.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d5">
+        <div class="bev-img-wrap">
+          <img src="imagenes/pasteles/pastel de garbanzo.png" alt="Pastel de Garbanzo"
+               onerror="this.src='https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&q=80'"/>
+        </div>
+        <div class="bev-body">
+          <h6>Pastel de Garbanzo</h6>
+          <span>$ 3.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d6">
+        <div class="bev-img-wrap">
+          <img src="imagenes/pasteles/pastel horneado de pollo con vegetales.png" alt="Pastel Horneado de Pollo con Vegetales"
+               onerror="this.src='https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&q=80'"/>
+        </div>
+        <div class="bev-body">
+          <h6>Pastel Horneado de Pollo con Vegetales</h6>
+          <span>$ 6.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ══════════════ PRODUCTO HOJALDRE ══════════════ -->
+<section class="recipe recipe-section" id="hojaldre" style="padding-top:40px;padding-bottom:70px;background:#fff;">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="cursive-label">Nuestro</span>
+      <h2 class="sec-title" style="font-size:2.6rem">Productos Hojaldre</h2>
+      <div class="ornament"><i class="fas fa-star"></i></div>
+    </div>
+    <div class="recipe-carousel-wrap">
+    <div class="bev-grid">
+      <div class="bev-card reveal d1">
+        <div class="bev-img-wrap">
+          <img src="imagenes/antojos/dedo.png" alt="Dedo de Queso"
+               onerror="this.src='https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&q=80'"/>
+        </div>
+        <div class="bev-body">
+          <h6>Dedo de Queso</h6>
+          <span>$ 3.500</span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ══════════════ BANNER POSTRES ══════════════ -->
+<section class="deals" style="background:linear-gradient(135deg,var(--wine) 0%,#a53048 50%,#c96080 100%);">
+  <div class="container" style="position:relative;z-index:2">
+    <h2 class="sec-title reveal d1" style="color:#fff;font-size:2.6rem">Postres y Antojos</h2>
+    <p class="reveal d2">Disfruta nuestra variedad de sabores artesanales preparados con ingredientes frescos y el toque casero que nos caracteriza. Encuentra churros, brownies, muffins, tortas y deliciosos postres perfectos para cualquier ocasión.</p>
+  </div>
+</section>
+ 
+<!-- ══════════════ POSTRES ══════════════ -->
+<section class="recipe recipe-section" id="postres" style="padding-top:40px;padding-bottom:40px">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="cursive-label">Nuestros</span>
+      <h2 class="sec-title" style="font-size:2.6rem">Deliciosos Postres</h2>
+      <div class="ornament"><i class="fas fa-star"></i></div>
+    </div>
+    <div class="recipe-carousel-wrap">
+    <div class="bev-grid">
+      <div class="bev-card reveal d1">
+        <div class="bev-img-wrap">
+          <img src="imagenes/postres/imagen1.png" alt="Cupcake Red Velvet"/>
+        </div>
+        <div class="bev-body">
+          <h6>Muffis Red Velvet</h6>
+          <span>$ 6.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d2">
+        <div class="bev-img-wrap">
+          <img src="imagenes/postres/imagen2.png" alt="Torta de Zanahoria"/>
+        </div>
+        <div class="bev-body">
+          <h6>Torta De Zanahoria </h6>
+          <h6>Porcion</h6>
+          <span>$ 10.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d3">
+        <div class="bev-img-wrap">
+          <img src="imagenes/postres/imagen3.png" alt="Quesillo"/>
+        </div>
+        <div class="bev-body">
+          <h6>Flan Quesillo</h6>
+          <span>$ 5.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d4">
+        <div class="bev-img-wrap">
+          <img src="imagenes/postres/imagen4.png" alt="Torta Red Velvet"/>
+        </div>
+        <div class="bev-body">
+          <h6>Torta Red Velvet </h6>
+          <h6>Porcion</h6>
+          <span>$ 10.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d5">
+        <div class="bev-img-wrap">
+          <img src="imagenes/postres/imagen5.png" alt="Torta de Chocolate"/>
+        </div>
+        <div class="bev-body">
+          <h6>Torta de Chocolate</h6>
+          <h6>Porcion</h6>
+          <span>$ 10.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d5">
+        <div class="bev-img-wrap">
+          <img src="imagenes/postres/Cream Bulle.png" alt="Torta de Chocolate"/>
+        </div>
+        <div class="bev-body">
+          <h6>Cream Bulle</h6>
+          <span>$ 5.000</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+    </div>
+    </div>
+ 
+  </div>
+</section>
+ 
+ 
+<!-- ══════════════ ANTOJOS ══════════════ -->
+<section class="recipe recipe-section" id="antojos" style="padding-top:40px;padding-bottom:70px;">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="cursive-label">Nuestros</span>
+      <h2 class="sec-title" style="font-size:2.6rem">Productos De Pasteleria</h2>
+      <div class="ornament"><i class="fas fa-heart"></i></div>
+    </div>
+    <div class="recipe-carousel-wrap">
+    <div class="bev-grid">
+      <div class="bev-card reveal d1">
+        <div class="bev-img-wrap">
+          <img src="imagenes/antojos/churro.png" alt="Churro"/>
+        </div>
+        <div class="bev-body">
+          <h6>Churro De Bocadillo Y Queso</h6>
+          <span>$ 3.500</span>
+        </div>
+      </div>
+      <div class="bev-card reveal d2">
+        <div class="bev-img-wrap">
+          <img src="imagenes/antojos/manteca de frutos rojos.png" alt="Manteca de Frutos Rojos"/>
+        </div>
+        <div class="bev-body">
+          <h6>Manteca de Frutos Rojos</h6>
+          <span>$ 5.500</span>
+        </div>
+      </div>
+      <div class="bev-card reveal d3">
+        <div class="bev-img-wrap">
+          <img src="imagenes/antojos/manteca tradicional.png" alt="Manteca Tradicional"/>
+        </div>
+        <div class="bev-body">
+          <h6>Manteca Tradicional</h6>
+          <span>$ 5.000</span>
+        </div>
+      </div>
+      <div class="bev-card reveal d4">
+        <div class="bev-img-wrap">
+          <img src="imagenes/antojos/Rollo de canela.png" alt="Rollo de Canela"/>
+        </div>
+        <div class="bev-body">
+          <h6>Rollo de Canela</h6>
+          <span>$ 3.500</span>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+ 
+ 
+<!-- 
+<section class="deals">
+  <div class="container" style="position:relative;z-index:2">
+    <span class="deal-badge reveal">30% Off For Juice</span>
+    <h2 class="sec-title reveal d1" style="color:#fff;font-size:2.6rem">Big Deals of the Week</h2>
+    <p>Us percipit urbanitas referrentur ea. Mei at numquam molestiae<br>intellegam. Ansed dictas accumsan.</p>
+    <p style="color:rgba(255,255,255,.58);font-size:.83rem;margin-top:-18px;margin-bottom:28px">To Get New Of Our Deals</p>
+    <div class="deal-form">
+      <input type="email" placeholder="Enter your email address..."/>
+      <button>Subscribe Now</button>
+    </div>
+  </div>
+</section>
+ 
+ 
+<section class="recipe recipe-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="cursive-label">yummy</span>
+      <span class="sub-label" style="display:block;text-align:center">Best for You</span>
+      <h2 class="sec-title" style="font-size:2.6rem">Nuestras Delicias del Día</h2>
+      <div class="ornament"><i class="fas fa-seedling"></i></div>
+    </div>
+    <div class="recipe-carousel-wrap">
+    <div class="bev-grid">
+      <div class="bev-card reveal d1">
+        <div class="bev-img-wrap">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80" alt="Pan Artesanal"/>
+        </div>
+        <div class="bev-body">
+          <h6>Pan Artesanal</h6>
+          <span>Horneado fresco cada mañana.</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d2">
+        <div class="bev-img-wrap">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80" alt="Torta de Chocolate"/>
+        </div>
+        <div class="bev-body">
+          <h6>Torta de Chocolate</h6>
+          <span>Húmeda, esponjosa y deliciosa.</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d3">
+        <div class="bev-img-wrap">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80" alt="Café Especial"/>
+        </div>
+        <div class="bev-body">
+          <h6>Café Especial</h6>
+          <span>Blend premium de origen colombiano.</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+      <div class="bev-card reveal d4">
+        <div class="bev-img-wrap">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=80" alt="Croissant de Mantequilla"/>
+        </div>
+        <div class="bev-body">
+          <h6>Croissant de Mantequilla</h6>
+          <span>Crocante por fuera, suave por dentro.</span>
+          <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="recipe-carousel-dots" id="rdots2">
+      <button class="rdot active"></button>
+      <button class="rdot"></button>
+      <button class="rdot"></button>
+      <button class="rdot"></button>
+    </div>
+    <div class="bev-cta">
+      <a href="#" class="btn btn-wine"><span>Ver Todos los Productos &nbsp;<i class="fas fa-arrow-right"></i></span></a>
+    </div>
+  </div>
+</section>
+ 
+ 
+<section class="upcoming">
+  <div class="container">
+    <div class="up-inner">
+      <div>
+        <h2 class="sec-title reveal reveal-left" style="font-size:2.6rem;margin-bottom:18px">Upcoming Our<br><em style="color:var(--wine)">Beverage</em></h2>
+        <p class="sec-desc reveal reveal-left d2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        <a href="#" class="btn btn-wine reveal reveal-left d3" style="margin-top:30px"><span>All Products &nbsp;<i class="fas fa-arrow-right"></i></span></a>
+      </div>
+      <div class="up-img-wrap reveal reveal-right">
+        <img src="https://preview.robertbiswas.com/php/foodily/images/resource/image-1.jpg"
+             alt="Upcoming"
+             onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=80'"/>
+        <div class="up-badge"><span class="big">30%</span><span class="small">Weekly Discount</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+ 
+<section class="testimonials">
+  <div class="container">
+    <div class="text-center">
+      <span class="cursive-label">Testimonial</span>
+      <h2 class="sec-title" style="font-size:2.6rem">What People Say</h2>
+    </div>
+    <div class="testi-wrap reveal">
+      <div class="testi-track" id="ttrack">
+        <div class="testi-card">
+          <img class="testi-avatar" src="https://preview.robertbiswas.com/php/foodily/images/resource/author-1.jpg" alt=""
+               onerror="this.src='https://ui-avatars.com/api/?name=Meredith+Grant&background=722F37&color=fff&size=86'"/>
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."</blockquote>
+          <cite>Meredith Grant — Host Mother</cite>
+        </div>
+        <div class="testi-card">
+          <img class="testi-avatar" src="https://preview.robertbiswas.com/php/foodily/images/resource/author-1.jpg" alt=""
+               onerror="this.src='https://ui-avatars.com/api/?name=James+Wilson&background=722F37&color=fff&size=86'"/>
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."</blockquote>
+          <cite>James Wilson — Food Blogger</cite>
+        </div>
+        <div class="testi-card">
+          <img class="testi-avatar" src="https://preview.robertbiswas.com/php/foodily/images/resource/author-1.jpg" alt=""
+               onerror="this.src='https://ui-avatars.com/api/?name=Sofia+Lee&background=722F37&color=fff&size=86'"/>
+          <div class="testi-stars">★★★★★</div>
+          <blockquote>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."</blockquote>
+          <cite>Sofia Lee — Nutritionist</cite>
+        </div>
+      </div>
+    </div>
+    <div class="testi-dots">
+      <button class="tdot active" onclick="goT(0)"></button>
+      <button class="tdot" onclick="goT(1)"></button>
+      <button class="tdot" onclick="goT(2)"></button>
+    </div>
+  </div>
+</section>
+ 
+ 
+<section class="blog">
+  <div class="container">
+    <div class="text-center">
+      <span class="cursive-label reveal">News &amp; Recipe</span>
+      <h2 class="sec-title reveal d1" style="font-size:2.6rem">Our Fruitsome Blog</h2>
+      <p class="sec-desc" style="margin-top:12px">Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal d1">
+        <div class="blog-img">
+          <img src="https://preview.robertbiswas.com/php/foodily/images/resource/news-1.jpg" alt="Blog 1"
+               onerror="this.src='https://images.unsplash.com/photo-1638176066614-f4e2e4e7fc68?w=500&q=80'"/>
+          <span class="blog-tag">Smoothie</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta"><span><i class="fas fa-calendar-alt"></i> May 21, 2021</span><span><i class="fas fa-comment"></i> 2 Comments</span></div>
+          <h6>Broad bean and goats' cheese bruschetta recipe</h6>
+          <a href="#" class="blog-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="blog-card reveal d2">
+        <div class="blog-img">
+          <img src="https://preview.robertbiswas.com/php/foodily/images/resource/news-2.jpg" alt="Blog 2"
+               onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=500&q=80'"/>
+          <span class="blog-tag">Smoothie</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta"><span><i class="fas fa-calendar-alt"></i> May 21, 2021</span><span><i class="fas fa-comment"></i> 2 Comments</span></div>
+          <h6>Broad bean and goats' cheese bruschetta recipe</h6>
+          <a href="#" class="blog-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="blog-card reveal d3">
+        <div class="blog-img">
+          <img src="https://preview.robertbiswas.com/php/foodily/images/resource/news-3.jpg" alt="Blog 3"
+               onerror="this.src='https://images.unsplash.com/photo-1502741224143-90386d7f8c82?w=500&q=80'"/>
+          <span class="blog-tag">Smoothie</span>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta"><span><i class="fas fa-calendar-alt"></i> May 21, 2021</span><span><i class="fas fa-comment"></i> 2 Comments</span></div>
+          <h6>Broad bean and goats' cheese bruschetta recipe</h6>
+          <a href="#" class="blog-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+ 
+<section class="gallery">
+  <div class="gal-track">
+    <img src="https://preview.robertbiswas.com/php/foodily/images/gallery/1.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1638176066614-f4e2e4e7fc68?w=300&q=80'"/>
+    <img src="https://preview.robertbiswas.com/php/foodily/images/gallery/2.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=300&q=80'"/>
+    <img src="https://preview.robertbiswas.com/php/foodily/images/gallery/3.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1502741224143-90386d7f8c82?w=300&q=80'"/>
+    <img src="https://preview.robertbiswas.com/php/foodily/images/gallery/4.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=300&q=80'"/>
+    <img src="https://preview.robertbiswas.com/php/foodily/images/gallery/5.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=300&q=80'"/>
+    <img src="https://preview.robertbiswas.com/php/foodily/images/gallery/1.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1638176066614-f4e2e4e7fc68?w=300&q=80'"/>
+    <img src="https://preview.robertbiswas.com/php/foodily/images/gallery/2.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=300&q=80'"/>
+    <img src="https://preview.robertbiswas.com/php/foodily/images/gallery/3.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1502741224143-90386d7f8c82?w=300&q=80'"/>
+    <img src="https://preview.robertbiswas.com/php/foodily/images/gallery/4.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=300&q=80'"/>
+    <img src="https://preview.robertbiswas.com/php/foodily/images/gallery/5.jpg" alt="" onerror="this.src='https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=300&q=80'"/>
+  </div>
+</section>
+ 
+-->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="#" style="display:inline-flex;align-items:center;gap:10px;line-height:1;text-decoration:none;margin-bottom:14px;">
+          <img src="logo.png" alt="La Niña Maria" style="width:62px;height:62px;border-radius:50%;object-fit:cover;object-position:center 20%;border:2.5px solid var(--wine);box-shadow:0 4px 14px rgba(123,28,46,.22);flex-shrink:0;"/>
+          <span style="display:flex;flex-direction:column;justify-content:center;">
+            <span style="display:flex;align-items:baseline;line-height:1;gap:0;font-family:'Dancing Script',cursive;font-weight:700;color:#fff;">
+              <em style="font-size:3.2rem;line-height:1;">L</em><em style="font-size:1.9rem;line-height:1.1;margin-top:10px;margin:auto;margin-left:3px;">as delicias</em>
+            </span>
+            <span style="font-family:'Poppins',sans-serif;font-style:normal;font-size:0.78rem;font-weight:400;color:rgba(255,255,255,.7);display:block;line-height:1;margin-left:33px;margin-top:-13px;">de La Niña Maria</span>
+          </span>
+        </a>
+        <p class="f-about">Proximamente descripcion </p>
+        <div class="f-social">
+          <a href="https://www.facebook.com/share/1B95yuY3C2/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/lasdeliciasdelaninamaria?igsh=MWJ1b2FtczN0dTcwMA=="><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-dribbble"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h5>Contactos</h5>
+        <div class="f-contact"><i class="fas fa-map-marker-alt"></i><span>Av. No 17-110 (Esquina) Barrio La playa</span></div>
+        <div class="f-contact"><i class="fas fa-envelope"></i><span>infoasiloandresen@gmail.com</span></div>
+        <div class="f-contact"><i class="fas fa-phone"></i><span>+57 310 2594232</span></div>
+      </div>
+      
+      
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container">© 2026 <span>Las Delicias de La Niña Maria</span> All Rights Reserved.</div></div>
+</footer>
+ 
+<!-- SEARCH: inline en header -->
+ 
+<!-- ════════ MODAL DETALLE PRODUCTO ════════ -->
+<div id="productoModal" role="dialog" aria-modal="true">
+  <div class="modal-backdrop" onclick="closeProdModal()"></div>
+  <div class="prod-modal-box">
+    <button class="prod-modal-close" onclick="closeProdModal()" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+    <img id="prodModalImg" class="prod-modal-img" src="" alt=""/>
+    <div class="prod-modal-body">
+      <h3 id="prodModalName"></h3>
+      <span class="prod-modal-price" id="prodModalPrice"></span>
+    </div>
+  </div>
+</div>
+ 
+<!-- ════════ MODAL BEBIDAS ════════ -->
+<div id="bebidasModal" role="dialog" aria-modal="true" aria-labelledby="modalBevTitle">
+  <div class="modal-backdrop" onclick="closeBebidasModal()"></div>
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="modal-cursive">Refrescantes y naturales</span>
+      <h2 id="modalBevTitle">Nuestras Bebidas</h2>
+      <div class="ornament"><i class="fas fa-seedling"></i></div>
+      <button class="modal-close" onclick="closeBebidasModal()" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="modalBody">
+ 
+      <div class="modal-bev-grid">
+ 
+        <!-- ── BEBIDAS NATURALES ── -->
+        <div class="bev-section-sep" data-category="Bebidas Naturales" data-icon="fas fa-leaf">
+          <div class="bev-section-sep-line"></div>
+          <span class="bev-section-sep-label">Bebidas Naturales</span>
+          <div class="bev-section-sep-line"></div>
+        </div>
+ 
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/jugo natural.png" alt="Jugo Natural"
+                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
+          </div>
+          <div class="bev-body">
+            <h6>Jugo Natural</h6>
+            <span>$ 4.000</span>
+            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+          </div>
+        </div>
+ 
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/agua.png" alt="Agua"
+                 onerror="this.src='https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80'"/>
+          </div>
+          <div class="bev-body">
+            <h6>Agua</h6>
+            <span>$ 1.500</span>
+            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+          </div>
+        </div>
+ 
+        <!-- ── BEBIDAS CALIENTES ── -->
+        <div class="bev-section-sep" data-category="Bebidas Calientes" data-icon="fas fa-mug-hot">
+          <div class="bev-section-sep-line"></div>
+          <span class="bev-section-sep-label">Bebidas Calientes</span>
+          <div class="bev-section-sep-line"></div>
+        </div>
+ 
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/imagen1.png" alt="Café"
+                 onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80'"/>
+          </div>
+          <div class="bev-body">
+            <h6>Espresso Sencillo</h6>
+            <span>$ 3.500</span>
+            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+          </div>
+        </div>
+ 
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/imagen2.png" alt="Aromática"
+                 onerror="this.src='https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&q=80'"/>
+          </div>
+          <div class="bev-body">
+            <h6>Americano</h6>
+            <span>$ 4.000</span>
+            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+          </div>
+        </div>
+ 
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/imagen4.png" alt="Chocolate"
+                 onerror="this.src='https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=400&q=80'"/>
+          </div>
+          <div class="bev-body">
+            <h6>Latte</h6>
+            <span>$ 7.000</span>
+            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+          </div>
+        </div>
+ 
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/imagen5.png" alt="Leche"
+                 onerror="this.src='https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80'"/>
+          </div>
+          <div class="bev-body">
+            <h6>Capuchino (Capucano)</h6>
+            <span>$ 7.000</span>
+            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+          </div>
+        </div>
+ 
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/imagen7.png" alt="Avena"
+                 onerror="this.src='https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&q=80'"/>
+          </div>
+          <div class="bev-body">
+            <h6>Aromaticas sencilla</h6>
+            <span>$ 3.000</span>
+            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+          </div>
+        </div>
+ 
+        
+ 
+        <!-- ── BEBIDAS REFRESCANTES ── -->
+        <div class="bev-section-sep" data-category="Bebidas Refrescantes" data-icon="fas fa-snowflake">
+          <div class="bev-section-sep-line"></div>
+          <span class="bev-section-sep-label">Bebidas Refrescantes</span>
+          <div class="bev-section-sep-line"></div>
+        </div>
+ 
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/gaseosa postobón.png" alt="Gaseosa Postobón"
+                 onerror="this.src='https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80'"/>
+          </div>
+          <div class="bev-body">
+            <h6>Gaseosa Postobón</h6>
+            <span>$ 2.500</span>
+            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<a id="whatsapp-float" href="https://wa.me/573232366808" target="_blank" title="Contáctanos por WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+ 
+<script>
+ 
+// ── SCROLL REVEAL (Intersection Observer) ──
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  if(!els.length) return;
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        // once visible, stop observing to save performance
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(el=>io.observe(el));
+})();
+ 
+// Preloader — robusto para móviles lentos
+(function(){
+  const pre = document.getElementById('preloader');
+  let done = false;
+ 
+  function showAndHide(){
+    if(done) return;
+    done = true;
+    pre.classList.add('fonts-ready');
+    setTimeout(()=>{
+      pre.classList.add('hidden');
+      // Forzar display:none tras la transición para garantizar que desaparece
+      setTimeout(()=>{ pre.style.display='none'; }, 600);
+    }, 600);
+  }
+ 
+  // Tiempo máximo de espera: 3 segundos. Si algo falla, el preloader se oculta igual.
+  const safetyTimer = setTimeout(showAndHide, 3000);
+ 
+  function tryHide(){
+    clearTimeout(safetyTimer);
+    showAndHide();
+  }
+ 
+  if(document.fonts && document.fonts.load){
+    Promise.all([
+      document.fonts.load('700 3rem "Dancing Script"').catch(()=>{}),
+      new Promise(res=>{
+        if(document.readyState === 'complete') res();
+        else window.addEventListener('load', res, {once:true});
+      })
+    ]).then(tryHide).catch(tryHide);
+  } else {
+    if(document.readyState === 'complete'){
+      tryHide();
+    } else {
+      window.addEventListener('load', tryHide, {once:true});
+    }
+  }
+})();
+ 
+// Scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('hdr').classList.toggle('scrolled',scrollY>60);
+});
+ 
+// Hero Slider — autoplay desactivado mientras solo hay 1 slide activo
+let cur=0,tot=3,tmr;
+function chSlide(d){
+  cur=(cur+d+tot)%tot;
+  const isMob = window.innerWidth <= 600;
+  document.getElementById('slides').style.transform = isMob
+    ? `translateX(-${cur*100}vw)`
+    : `translateX(-${cur*100}%)`;
+  // clearInterval(tmr);
+  // tmr=setInterval(()=>chSlide(1),5500);
+}
+// tmr=setInterval(()=>chSlide(1),5500); // pausado: solo 1 slide activo
+ 
+// Swipe táctil en el hero (móvil)
+(function(){
+  const hero = document.querySelector('.hero');
+  let startX = 0, startY = 0, dragging = false;
+ 
+  hero.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    dragging = true;
+  }, {passive:true});
+ 
+  hero.addEventListener('touchend', e => {
+    if(!dragging) return;
+    dragging = false;
+    const dx = startX - e.changedTouches[0].clientX;
+    const dy = startY - e.changedTouches[0].clientY;
+    // Solo activar si el movimiento es más horizontal que vertical y supera 40px
+    if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)){
+      chSlide(dx > 0 ? 1 : -1);
+    }
+  }, {passive:true});
+})();
+ 
+// Testimonials
+let ct=0;
+function goT(i){ct=i;document.getElementById('ttrack').style.transform=`translateX(-${i*100}%)`;document.querySelectorAll('.tdot').forEach((d,j)=>d.classList.toggle('active',j===i));}
+setInterval(()=>goT((ct+1)%3),5500);
+ 
+// Search inline
+function toggleS(){
+  const bar=document.getElementById('searchBar');
+  const inp=document.getElementById('searchInput');
+  const btn=document.getElementById('searchBtn');
+  const res=document.getElementById('searchResults');
+  const isOpen=bar.classList.contains('open');
+  if(isOpen){
+    bar.classList.remove('open');
+    btn.style.color='';
+    if(res){ res.classList.remove('show'); res.innerHTML=''; }
+    inp.value='';
+  } else {
+    bar.classList.add('open');
+    btn.style.color='var(--wine)';
+    setTimeout(()=>inp.focus(),350);
+  }
+}
+function closeS(){
+  const bar=document.getElementById('searchBar');
+  const btn=document.getElementById('searchBtn');
+  const res=document.getElementById('searchResults');
+  bar.classList.remove('open');
+  btn.style.color='';
+  if(res){ res.classList.remove('show'); res.innerHTML=''; }
+  document.getElementById('searchInput').value='';
+}
+function closeSBg(e){if(e.target===document.getElementById('sm'))closeS();}
+// Cerrar si click fuera del buscador
+document.addEventListener('click',e=>{
+  const wrap=document.querySelector('.search-wrap');
+  if(wrap && !wrap.contains(e.target)) closeS();
+});
+ 
+// Mobile nav
+function toggleMob(){const n=document.getElementById('mnav');n.classList.toggle('open');document.body.style.overflow=n.classList.contains('open')?'hidden':'';}
+ 
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){ closeS(); closeBebidasModal(); closeProdModal(); }
+});
+ 
+// ── MODAL DETALLE PRODUCTO ──
+function openProdModal(el){
+  const card = el.closest ? el.closest('.bev-card') : el;
+  const img  = card.querySelector('img');
+  const name = card.querySelector('h6').textContent;
+  const price= card.querySelector('span').textContent;
+ 
+  document.getElementById('prodModalImg').src   = img.currentSrc || img.src;
+  document.getElementById('prodModalImg').alt   = name;
+  document.getElementById('prodModalName').textContent  = name;
+  document.getElementById('prodModalPrice').textContent = price;
+ 
+  document.getElementById('productoModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeProdModal(){
+  document.getElementById('productoModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+ 
+// ── MODAL BEBIDAS ──
+// Prevenir scroll del fondo en iOS Safari (touchmove en el backdrop)
+function _preventBgScroll(e){
+  // Permitir scroll solo si el toque viene del modal-body
+  const modalBody = document.querySelector('#bebidasModal .modal-body');
+  if(modalBody && modalBody.contains(e.target)) return;
+  e.preventDefault();
+}
+function openBebidasModal(){
+  const m = document.getElementById('bebidasModal');
+  m.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.addEventListener('touchmove', _preventBgScroll, {passive:false});
+}
+function closeBebidasModal(){
+  const m = document.getElementById('bebidasModal');
+  m.classList.remove('open');
+  document.body.style.overflow = '';
+  document.removeEventListener('touchmove', _preventBgScroll);
+}
+ 
+document.querySelectorAll('.bev-card').forEach(card => {
+  card.addEventListener('click', function(e){
+    // Evitar doble disparo si viene del link ver-mas (ya oculto)
+    openProdModal(this);
+  });
+});
+ 
+(function(){
+  function initCarousel(section) {
+    const wrap  = section.querySelector('.recipe-carousel-wrap');
+    const track = section.querySelector('.bev-grid');
+    const dotsEl= section.querySelector('.recipe-carousel-dots');
+    if(!wrap || !track || !dotsEl) return;
+ 
+    const cards = Array.from(track.querySelectorAll('.bev-card'));
+    const dots  = Array.from(dotsEl.querySelectorAll('.rdot'));
+    let cur = 0;
+    let startX = 0;
+ 
+    function isMobile(){ return window.innerWidth <= 600; }
+ 
+    function goTo(idx) {
+      cur = (idx + cards.length) % cards.length;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dots.forEach((d,i) => d.classList.toggle('active', i === cur));
+    }
+ 
+    // Touch swipe
+    wrap.addEventListener('touchstart', e => {
+      if(!isMobile()) return;
+      startX = e.touches[0].clientX;
+    }, {passive:true});
+ 
+    wrap.addEventListener('touchend', e => {
+      if(!isMobile()) return;
+      const diff = startX - e.changedTouches[0].clientX;
+      if(Math.abs(diff) > 40) goTo(diff > 0 ? cur + 1 : cur - 1);
+    }, {passive:true});
+ 
+    // Dots
+    dots.forEach((d, i) => d.addEventListener('click', () => { if(isMobile()) goTo(i); }));
+ 
+    // Reset en desktop
+    window.addEventListener('resize', () => {
+      if(!isMobile()) {
+        track.style.transform = '';
+        cur = 0;
+        dots.forEach((d,i) => d.classList.toggle('active', i===0));
+      }
+    });
+  }
+ 
+  document.querySelectorAll('.recipe-section').forEach(s => initCarousel(s));
+})();
+ 
+// ── BUSCADOR EN TIEMPO REAL ──
+(function(){
+  function buildIndex(){
+    const products = [];
+    document.querySelectorAll('.bev-card').forEach(card => {
+      const img   = card.querySelector('img');
+      const name  = card.querySelector('h6');
+      const price = card.querySelector('span');
+      if(!name) return;
+      products.push({
+        name:  name.textContent.trim(),
+        price: price ? price.textContent.trim() : '',
+        img:   img ? (img.currentSrc || img.src) : '',
+        card
+      });
+    });
+    return products;
+  }
+ 
+  let INDEX = [];
+  window.addEventListener('load', () => { INDEX = buildIndex(); });
+ 
+  const resultsBox  = document.getElementById('searchResults');
+  const mnavResults = document.getElementById('mnavSearchResults');
+ 
+  function renderResults(found, container, isMob){
+    if(!found.length){
+      container.innerHTML = '<div class="sr-empty">No se encontraron productos</div>';
+    } else {
+      container.innerHTML = found.map((p,i) => `
+        <div class="sr-item" data-idx="${INDEX.indexOf(p)}">
+          <img src="${p.img}" alt="${p.name}"
+               onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&q=80'"/>
+          <div class="sr-item-info">
+            <span class="sr-item-name">${p.name}</span>
+            <span class="sr-item-price">${p.price}</span>
+          </div>
+        </div>
+      `).join('');
+      // Bind click → open product modal
+      container.querySelectorAll('.sr-item').forEach(el => {
+        el.addEventListener('click', () => {
+          const idx = parseInt(el.dataset.idx);
+          const p = INDEX[idx];
+          if(!p) return;
+          // Cerrar buscador
+          resultsBox.classList.remove('show');
+          mnavResults.classList.remove('show');
+          if(isMob){
+            document.getElementById('mnavSearchInput').value = '';
+            // Cerrar el menú móvil primero, luego animar el modal
+            const mnav = document.getElementById('mnav');
+            if(mnav){ mnav.classList.remove('open'); }
+            document.body.style.overflow = '';
+            // Precargar datos del modal
+            const modal = document.getElementById('productoModal');
+            document.getElementById('prodModalImg').src  = p.img;
+            document.getElementById('prodModalImg').alt  = p.name;
+            document.getElementById('prodModalName').textContent  = p.name;
+            document.getElementById('prodModalPrice').textContent = p.price;
+            // Preparar caja en estado inicial igual al CSS original
+            const box = modal.querySelector('.prod-modal-box');
+            if(box){
+              box.style.transition = 'none';
+              box.style.transform  = 'translateY(30px) scale(.97)';
+            }
+            // Esperar a que el menú termine de cerrar (~420ms) y luego abrir con la animación original
+            setTimeout(() => {
+              modal.classList.add('open');
+              document.body.style.overflow = 'hidden';
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  if(box){
+                    box.style.transition = 'transform .35s cubic-bezier(.25,.8,.25,1)';
+                    box.style.transform  = 'translateY(0) scale(1)';
+                  }
+                });
+              });
+            }, 420);
+            return;
+          } else {
+            closeS();
+          }
+          // Abrir modal de producto con datos (desktop)
+          const modal = document.getElementById('productoModal');
+          document.getElementById('prodModalImg').src  = p.img;
+          document.getElementById('prodModalImg').alt  = p.name;
+          document.getElementById('prodModalName').textContent  = p.name;
+          document.getElementById('prodModalPrice').textContent = p.price;
+          modal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+    }
+    container.classList.add('show');
+  }
+ 
+  window.doSearch = function(q, mode){
+    q = q.trim().toLowerCase();
+    const container = mode === 'mnav' ? mnavResults : resultsBox;
+    if(!q){ container.classList.remove('show'); container.innerHTML=''; return; }
+    const nameLow = p => p.name.toLowerCase();
+    const found   = INDEX.filter(p => nameLow(p).startsWith(q));
+    renderResults(found, container, mode === 'mnav');
+  };
+ 
+  // Cerrar dropdown desktop al click fuera
+  document.addEventListener('click', e => {
+    const wrap = document.querySelector('.search-wrap');
+    if(wrap && !wrap.contains(e.target)){
+      resultsBox.classList.remove('show');
+    }
+  });
+})();
+</script>
+</body>
+</html>
