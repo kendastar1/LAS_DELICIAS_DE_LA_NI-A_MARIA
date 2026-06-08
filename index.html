@@ -326,6 +326,12 @@ section{padding:90px 0;}
   width:100%;aspect-ratio:3/4;object-fit:cover;
   display:block;transition:transform .5s;
 }
+/* Gaseosas: cover sin bordes, zoom para llenar bien la tarjeta */
+#bebidasModal .bev-img-wrap img{
+  object-fit:cover;
+  object-position:center;
+  image-rendering:-webkit-optimize-contrast;
+}
 .bev-card:hover .bev-img-wrap img{transform:scale(1.05);}
 .bev-body{padding:16px 4px 4px;}
 .bev-body h6{
@@ -1579,6 +1585,80 @@ footer{background:#2a0a12;color:rgba(255,255,255,.72);}
 </section>
  
  
+<!-- ══════════════ BANNER ENCARGOS ══════════════ -->
+<section class="deals" id="encargos" style="background:linear-gradient(135deg,var(--wine) 0%,#a53048 50%,#c96080 100%);padding:80px 0 60px;">
+  <div class="container" style="position:relative;z-index:2;text-align:center;">
+    <h2 class="sec-title reveal d1" style="color:#fff;font-size:2.8rem;margin-bottom:0;">Productos Por Encargo</h2>
+    <p class="reveal d2" style="color:rgba(255,255,255,.88);margin:20px auto 36px;max-width:560px;line-height:1.9;font-size:.97rem;">
+      ¿Tienes una celebración especial, evento o simplemente un antojo particular? Elaboramos  tortas de panadería a tu medida.
+      <strong style="color:var(--butter)">¡Escríbenos y cuéntanos tu idea!</strong>
+    </p>
+    <a href="https://wa.me/573000000000" target="_blank" class="btn reveal d3" style="background:#fff;color:var(--wine);border-color:#fff;font-size:.9rem;height:54px;padding:0 38px;">
+      <span><i class="fab fa-whatsapp" style="font-size:1.1rem;margin-right:6px;"></i>Hacer mi encargo</span>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════ TORTAS POR ENCARGO ══════════════ -->
+<section class="recipe recipe-section" style="padding-top:50px;padding-bottom:70px;background:#fff;">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="cursive-label">Nuestras</span>
+      <h2 class="sec-title" style="font-size:2.6rem">Deliciosas Tortas</h2>
+      <div class="ornament"><i class="fas fa-birthday-cake"></i></div>
+    </div>
+    <div class="recipe-carousel-wrap">
+    <div class="bev-grid">
+      <div class="bev-card reveal d1">
+        <div class="bev-img-wrap">
+          <img src="imagenes/tortas/pastel.png" alt="Torta de Zanahoria"
+               onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80'"/>
+        </div>
+        <div class="bev-body">
+          <h6>Torta de red Velvet</h6>
+          <h6>Media libra</h6>
+          <span>$ 80.000</span>
+        </div>
+      </div>
+      <div class="bev-card reveal d2">
+        <div class="bev-img-wrap">
+          <img src="imagenes/tortas/pastel2.png" alt="Torta Red Velvet"
+               onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80'"/>
+        </div>
+        <div class="bev-body">
+          <h6>Torta de de Chocolate</h6>
+          <h6>800 gramos</h6>
+          <span>$ 90.000</span>
+        </div>
+      </div>
+      <!--
+      <div class="bev-card reveal d3">
+        <div class="bev-img-wrap">
+          <img src="imagenes/postres/imagen5.png" alt="Torta de Chocolate"
+               onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80'"/>
+        </div>
+        <div class="bev-body">
+          <h6>Torta de Chocolate</h6>
+          <span>$ Por encargo</span>
+        </div>
+      </div>
+      <div class="bev-card reveal d4">
+        <div class="bev-img-wrap">
+          <img src="imagenes/postres/imagen1.png" alt="Ponqué Red Velvet"
+               onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80'"/>
+        </div>
+        <div class="bev-body">
+          <h6>Ponqué Red Velvet</h6>
+          <span>$ Por encargo</span>
+        </div>
+        -->
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- 
 <section class="deals">
   <div class="container" style="position:relative;z-index:2">
@@ -1946,25 +2026,207 @@ footer{background:#2a0a12;color:rgba(255,255,255,.72);}
  
         
  
-        <!-- ── BEBIDAS REFRESCANTES ── -->
-        <div class="bev-section-sep" data-category="Bebidas Refrescantes" data-icon="fas fa-snowflake">
+        <!-- ── CHOCOLATES & MOCCAS ── -->
+        <div class="bev-section-sep" data-category="Chocolates & Moccas" data-icon="fas fa-mug-hot">
           <div class="bev-section-sep-line"></div>
-          <span class="bev-section-sep-label">Bebidas Refrescantes</span>
+          <span class="bev-section-sep-label">Chocolates &amp; Moccas</span>
           <div class="bev-section-sep-line"></div>
         </div>
- 
+
         <div class="bev-card">
           <div class="bev-img-wrap">
-            <img src="imagenes/bebidas/gaseosa postobón.png" alt="Gaseosa Postobón"
-                 onerror="this.src='https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80'"/>
+            <img src="imagenes/bebidas/chocolate.png" alt="Chocolate Caliente"
+                 onerror="this.src='https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=400&q=80'"/>
           </div>
           <div class="bev-body">
-            <h6>Gaseosa Postobón</h6>
-            <span>$ 2.500</span>
+            <h6>Chocolate</h6>
+            <span>$ 8.000</span>
             <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
           </div>
         </div>
- 
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/Mocca.png" alt="Mocca"
+                 onerror="this.src='https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80'"/>
+          </div>
+          <div class="bev-body">
+            <h6>Mocca</h6>
+            <span>$ 8.500</span>
+            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+          </div>
+        </div>
+        <!-- 
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/chocolate frio.png" alt="Chocolate Frío"
+                 onerror="this.src='https://images.unsplash.com/photo-1610878180933-123728745d22?w=400&q=80'"/>
+          </div>
+          <div class="bev-body">
+            <h6>Chocolate Frío</h6>
+            <span>$ 5.500</span>
+            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
+          </div>
+        </div>
+        -->
+
+        <!-- ── BEBIDAS REFRESCANTES ── -->
+        <!-- ── BEBIDAS REFRESCANTES / GASEOSAS ── -->
+        <div class="bev-section-sep" data-category="Bebidas Refrescantes" data-icon="fas fa-snowflake">
+          <div class="bev-section-sep-line"></div>
+          <span class="bev-section-sep-label">Gaseosas</span>
+          <div class="bev-section-sep-line"></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/gaseosas/colombiana.png" alt="Colombiana"
+                 onerror="this.src='https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Colombiana</h6><h6>personal</h6><span>$ 3.000</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/gaseosas/pepsi.png" alt="Pepsi"
+                 onerror="this.src='https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Pepsi</h6><h6>personal</h6><span>$ 3.000</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/gaseosas/postobon.png" alt="Postobón"
+                 onerror="this.src='https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Postobón</h6><h6>personal</h6><span>$ 3.000</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/gaseosas/bretaña.png" alt="Bretaña"
+                 onerror="this.src='https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Bretaña</h6><h6>personal</h6><span>$ 3.000</span></div>
+        </div>
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/gaseosas/pepsi1,5.png" alt="Pepsi"
+                 onerror="this.src='https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Pepsi</h6><h6>Litro y Medio</h6><span>$ 6.000</span></div>
+        </div>
+
+        <!-- ── HIDRATACIÓN & AGUAS ── -->
+        <div class="bev-section-sep" data-category="Hidratacion" data-icon="fas fa-tint">
+          <div class="bev-section-sep-line"></div>
+          <span class="bev-section-sep-label">Hidratación &amp; Aguas</span>
+          <div class="bev-section-sep-line"></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/jugos y maltas/gatorade.png" alt="Gatorade"
+                 onerror="this.src='https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Gatorade</h6><span>$ 4.500</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/jugos y maltas/agua con gas cristal.png" alt="Agua con Gas Cristal"
+                 onerror="this.src='https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Agua con Gas Cristal</h6><span>$ 3.000</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/jugos y maltas/agua brisa.png" alt="Agua Brisa"
+                 onerror="this.src='https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Agua Brisa</h6><span>$ 2.500</span></div>
+        </div>
+
+        <!-- ── JUGOS & MALTAS ── -->
+        <div class="bev-section-sep" data-category="Jugos Maltas" data-icon="fas fa-glass-whiskey">
+          <div class="bev-section-sep-line"></div>
+          <span class="bev-section-sep-label">Jugos &amp; Maltas</span>
+          <div class="bev-section-sep-line"></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/jugos y maltas/mr tea.png" alt="Mr Tea"
+                 onerror="this.src='https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Mr Tea</h6><span>$ 3.500</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/jugos y maltas/hit mango.png" alt="Hit Mango"
+                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Hit Mango</h6><span>$ Por definir</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/hit frutos tropicales.png" alt="Hit Frutos Tropicales"
+                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Hit Frutos Tropicales</h6><span>$ Por definir</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/hit lulo.png" alt="Hit Lulo"
+                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Hit Lulo</h6><span>$ Por definir</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/hit naranja.png" alt="Hit Naranja"
+                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Hit Naranja</h6><span>$ Por definir</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/hit piña.png" alt="Hit Piña"
+                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Hit Piña</h6><span>$ Por definir</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/hit mora.png" alt="Hit Mora"
+                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Hit Mora</h6><span>$ Por definir</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/bebidas/natu malta.png" alt="Natu Malta"
+                 onerror="this.src='https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Natu Malta</h6><span>$ Por definir</span></div>
+        </div>
+
+        <div class="bev-card">
+          <div class="bev-img-wrap">
+            <img src="imagenes/jugos y maltas/hit frutos tropicales.png" alt="Jugo Git Tropical"
+                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
+          </div>
+          <div class="bev-body"><h6>Jugo Git Tropical cajita</h6><span>$ 2.000</span></div>
+        </div>
+
       </div>
     </div>
   </div>
