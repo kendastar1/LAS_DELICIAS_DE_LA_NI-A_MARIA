@@ -274,12 +274,11 @@ h1.hero-title{
 .sarrow{
   position:absolute;top:50%;transform:translateY(-50%);
   width:50px;height:50px;
-  background:rgba(255,255,255,.18);backdrop-filter:blur(6px);
-  border:1.5px solid rgba(255,255,255,.5);border-radius:50%;
+  background:none;border:none;
   display:flex;align-items:center;justify-content:center;
-  cursor:pointer;z-index:5;font-size:.95rem;color:#fff;transition:all .3s;
+  cursor:pointer;z-index:5;font-size:1.3rem;color:#fff;transition:all .3s;
 }
-.sarrow:hover{background:rgba(255,255,255,.32);}
+.sarrow:hover{opacity:.7;}
 .sp{left:24px;}.sn{right:24px;}
  
 /* ── SECTION COMMONS ── */
@@ -1142,21 +1141,16 @@ footer{background:#2a0a12;color:rgba(255,255,255,.72);}
       </div>
     </div>
  
-    <!-- SLIDE 2
+    <!-- SLIDE 2 -->
     <div class="slide slide-2">
       <div class="slide-content">
-        <h1 class="hero-title">Fresh<br>Fruit Juice</h1>
-        <p class="hero-p">Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-        <a href="#" class="pill-btn">
-          <span style="position:relative;z-index:1">Buy Now</span>
+        <h1 class="hero-title">Servicios<br>Para Eventos</h1>
+        <p class="hero-p">Ofrecemos espacios para todo tipo de eventos, con un servicio gastronómico de calidad para hacer de cada ocasión un momento especial.</p>
+        <a href="portafolio.html" class="pill-btn">
+          <span style="position:relative;z-index:1">Ver más</span>
         </a>
-        <div class="slide-counter">
-          <span>01</span><span class="sep">/</span>
-          <span class="act">02</span><span class="sep">/</span><span>03</span>
-        </div>
       </div>
     </div>
-    -->
  
     <!-- SLIDE 3 
     <div class="slide slide-3">
@@ -1176,10 +1170,8 @@ footer{background:#2a0a12;color:rgba(255,255,255,.72);}
     -->
  
   </div>
-  <!-- Flechas ocultas mientras los slides 2 y 3 están comentados
   <button class="sarrow sp" onclick="chSlide(-1)"><i class="fas fa-chevron-left"></i></button>
   <button class="sarrow sn" onclick="chSlide(1)"><i class="fas fa-chevron-right"></i></button>
-  -->
 </section>
  
 <!-- ════════ FRESH JUICE ════════ -->
@@ -2302,18 +2294,18 @@ window.addEventListener('scroll',()=>{
   document.getElementById('hdr').classList.toggle('scrolled',scrollY>60);
 });
  
-// Hero Slider — autoplay desactivado mientras solo hay 1 slide activo
-let cur=0,tot=3,tmr;
+// Hero Slider — autoplay activo con 2 slides
+let cur=0,tot=2,tmr;
 function chSlide(d){
   cur=(cur+d+tot)%tot;
   const isMob = window.innerWidth <= 600;
   document.getElementById('slides').style.transform = isMob
     ? `translateX(-${cur*100}vw)`
     : `translateX(-${cur*100}%)`;
-  // clearInterval(tmr);
-  // tmr=setInterval(()=>chSlide(1),5500);
+  clearInterval(tmr);
+  tmr=setInterval(()=>chSlide(1),5500);
 }
-// tmr=setInterval(()=>chSlide(1),5500); // pausado: solo 1 slide activo
+tmr=setInterval(()=>chSlide(1),5500);
  
 // Swipe táctil en el hero (móvil)
 (function(){
