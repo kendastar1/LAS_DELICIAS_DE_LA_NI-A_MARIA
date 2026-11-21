@@ -8,6 +8,18 @@
  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <link rel="stylesheet" href="style.css"/>
+
+<style>
+/* Imagen de fondo del slide "Servicios Para Eventos" */
+.hero .slide.slide-2{
+  background-image:url('imagenes/auditorios/inicioparapresentacion.png') !important;
+  background-size:cover !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+}
+.hero .slide.slide-2 .hero-title,
+.hero .slide.slide-2 .hero-p{color:#fff !important;text-shadow:0 2px 12px rgba(0,0,0,.45);}
+</style>
 </head>
 <body>
  
@@ -98,9 +110,6 @@
       <div class="slide-content">
         <h1 class="hero-title">Bienvenido<br>A La Panaderia</h1>
         <p class="hero-p">Las Delicias de la Niña María ofrece productos para toda ocasión: PANES, PASTELES, HOJALDRES, FAST FOOD, PIZZA, POSTRES, TORTAS Y PONQUES.</p>
-        <a href="#" class="pill-btn">
-          <span style="position:relative;z-index:1">Proximamente</span>
-        </a>
       </div>
     </div>
  
@@ -142,9 +151,10 @@
   <div class="container">
     <div class="juice-grid">
       <div class="juice-image reveal reveal-left">
-        <img src="https://preview.robertbiswas.com/php/foodily/images/resource/juice.png"
-             alt="Fresh Juice"
-             onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=80'"/>
+        <div class="juice-stack">
+          <img class="juice-photo juice-photo-1" src="imagenes/bebidas/imagen4.png" alt="Latte"/>
+          <img class="juice-photo juice-photo-2" src="imagenes/bebidas/chocolate.png" alt="Chocolate"/>
+        </div>
       </div>
       <div class="reveal reveal-right">
         <span class="cursive-label">Acompaña</span>
@@ -833,11 +843,10 @@
             <span style="font-family:'Poppins',sans-serif;font-style:normal;font-size:0.78rem;font-weight:400;color:rgba(255,255,255,.7);display:block;line-height:1;margin-left:33px;margin-top:-13px;">de La Niña Maria</span>
           </span>
         </a>
-        <p class="f-about">Proximamente descripcion </p>
+        <p class="f-about">Panadería y servicios para eventos: panes, pasteles, postres y espacios para celebrar tus momentos especiales con calidez y calidad.</p>
         <div class="f-social">
           <a href="https://www.facebook.com/share/1B95yuY3C2/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
           <a href="https://www.instagram.com/lasdeliciasdelaninamaria?igsh=MWJ1b2FtczN0dTcwMA=="><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-dribbble"></i></a>
           <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
@@ -851,7 +860,7 @@
       
     </div>
   </div>
-  <div class="footer-bottom"><div class="container">© 2026 <span>Las Delicias de La Niña Maria</span> All Rights Reserved.</div></div>
+  <div class="footer-bottom"><div class="container">© 2026 <span>Las Delicias de La Niña Maria</span> Todos los derechos reservados.</div></div>
 </footer>
  
 <!-- SEARCH: inline en header -->
@@ -882,37 +891,6 @@
     <div class="modal-body" id="modalBody">
  
       <div class="modal-bev-grid">
- 
-        <!-- ── BEBIDAS NATURALES ── -->
-        <div class="bev-section-sep" data-category="Bebidas Naturales" data-icon="fas fa-leaf">
-          <div class="bev-section-sep-line"></div>
-          <span class="bev-section-sep-label">Bebidas Naturales</span>
-          <div class="bev-section-sep-line"></div>
-        </div>
- 
-        <div class="bev-card">
-          <div class="bev-img-wrap">
-            <img src="imagenes/bebidas/jugo natural.png" alt="Jugo Natural"
-                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
-          </div>
-          <div class="bev-body">
-            <h6>Jugo Natural</h6>
-            <span>$ 4.000</span>
-            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
-          </div>
-        </div>
- 
-        <div class="bev-card">
-          <div class="bev-img-wrap">
-            <img src="imagenes/bebidas/agua.png" alt="Agua"
-                 onerror="this.src='https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80'"/>
-          </div>
-          <div class="bev-body">
-            <h6>Agua</h6>
-            <span>$ 1.500</span>
-            <a href="#" class="ver-mas" style="display:block;margin-top:7px" onclick="openProdModal(this);return false;">VER MÁS</a>
-          </div>
-        </div>
  
         <!-- ── BEBIDAS CALIENTES ── -->
         <div class="bev-section-sep" data-category="Bebidas Calientes" data-icon="fas fa-mug-hot">
@@ -1126,54 +1104,6 @@
                  onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
           </div>
           <div class="bev-body"><h6>Hit Mango</h6><span>$ Por definir</span></div>
-        </div>
-
-        <div class="bev-card">
-          <div class="bev-img-wrap">
-            <img src="imagenes/bebidas/hit frutos tropicales.png" alt="Hit Frutos Tropicales"
-                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
-          </div>
-          <div class="bev-body"><h6>Hit Frutos Tropicales</h6><span>$ Por definir</span></div>
-        </div>
-
-        <div class="bev-card">
-          <div class="bev-img-wrap">
-            <img src="imagenes/bebidas/hit lulo.png" alt="Hit Lulo"
-                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
-          </div>
-          <div class="bev-body"><h6>Hit Lulo</h6><span>$ Por definir</span></div>
-        </div>
-
-        <div class="bev-card">
-          <div class="bev-img-wrap">
-            <img src="imagenes/bebidas/hit naranja.png" alt="Hit Naranja"
-                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
-          </div>
-          <div class="bev-body"><h6>Hit Naranja</h6><span>$ Por definir</span></div>
-        </div>
-
-        <div class="bev-card">
-          <div class="bev-img-wrap">
-            <img src="imagenes/bebidas/hit piña.png" alt="Hit Piña"
-                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
-          </div>
-          <div class="bev-body"><h6>Hit Piña</h6><span>$ Por definir</span></div>
-        </div>
-
-        <div class="bev-card">
-          <div class="bev-img-wrap">
-            <img src="imagenes/bebidas/hit mora.png" alt="Hit Mora"
-                 onerror="this.src='https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400&q=80'"/>
-          </div>
-          <div class="bev-body"><h6>Hit Mora</h6><span>$ Por definir</span></div>
-        </div>
-
-        <div class="bev-card">
-          <div class="bev-img-wrap">
-            <img src="imagenes/bebidas/natu malta.png" alt="Natu Malta"
-                 onerror="this.src='https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&q=80'"/>
-          </div>
-          <div class="bev-body"><h6>Natu Malta</h6><span>$ Por definir</span></div>
         </div>
 
         <div class="bev-card">

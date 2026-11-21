@@ -8,6 +8,95 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 <link rel="stylesheet" href="portafolio-style.css"/>
+
+<style>
+/* ══════ INICIO (hero) — mismo diseño que index.html (copiado de style.css) ══════ */
+.hero{margin-top:72px;position:relative;overflow:hidden;height:calc(100vh - 72px);min-height:560px;max-height:780px;padding:0;}
+.slides{display:flex;height:100%;transition:transform .75s cubic-bezier(.77,0,.175,1);}
+.slide{min-width:100%;height:100%;display:flex;align-items:center;position:relative;overflow:hidden;}
+.slide-1,.slide-2{position:relative;background-size:cover;background-position:center;background-repeat:no-repeat;overflow:hidden;}
+
+/* Fondos (también van en la capa .hero-bg, que se mueve con el parallax) */
+.slide-1{background-image:url('imagenes/auditorios/inicioparapresentacion.png');background-position:center 55%;}
+.slide-2{background-image:url('imagenes/portada.jpg');background-position:center 30%;}
+.hero .slide .hero-bg{
+  position:absolute !important;left:0;right:0;top:-32% !important;bottom:-32% !important;
+  width:100% !important;height:auto !important;z-index:0 !important;opacity:1 !important;filter:none !important;
+  background-size:cover !important;background-position:center !important;background-repeat:no-repeat !important;
+  background-attachment:scroll !important;background-color:transparent !important;
+}
+.hero .slide .hero-bg::before,.hero .slide .hero-bg::after{display:none !important;}
+.hero .slide-1 .hero-bg{background-image:url('imagenes/auditorios/inicioparapresentacion.png') !important;}
+.hero .slide-2 .hero-bg{background-image:url('imagenes/portada.jpg') !important;}
+
+/* Overlay oscuro */
+.slide-1::before,.slide-2::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45);z-index:1;}
+
+/* Ola blanca abajo */
+.slide::after{
+  content:'';position:absolute;bottom:-1px;left:0;right:0;height:110px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 110' preserveAspectRatio='none'%3E%3Cpath fill='%23ffffff' d='M0,70 C400,115 1040,15 1440,72 L1440,110 L0,110 Z'/%3E%3C/svg%3E") no-repeat bottom;
+  background-size:100% 100%;z-index:3;pointer-events:none;
+}
+.slide-content{flex:0 0 100%;padding:60px 120px;position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;}
+h1.hero-title{
+  font-family:'Dancing Script',cursive;font-weight:700;
+  font-size:clamp(4.8rem,9vw,8rem);line-height:1.0;
+  color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.15);margin-bottom:22px;
+}
+.hero-p{font-size:1rem;color:rgba(255,255,255,.92);max-width:440px;margin-bottom:40px;line-height:1.8;}
+
+/* Flechas */
+.sarrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:50px;height:50px;background:none;border:none;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:5;font-size:1.3rem;color:#fff;transition:all .3s;
+}
+.sarrow:hover{opacity:.7;}
+.sp{left:24px;}.sn{right:24px;}
+
+@media(max-width:1100px){
+  .slide-content{padding:40px 50px;}
+  h1.hero-title{font-size:clamp(3rem,6vw,5.5rem);}
+}
+@media(max-width:900px){
+  .slide{flex-direction:column;align-items:center;height:auto;padding-bottom:80px;}
+  .slide-content{padding:34px 28px 10px;flex:unset;width:100%;}
+}
+@media(max-width:600px){
+  .hero{margin-top:66px;height:calc(100dvh - 66px);min-height:480px;max-height:none;overflow:hidden;position:relative;}
+  .slides{display:flex;flex-wrap:nowrap;height:100%;width:100%;overflow:visible;transition:transform .75s cubic-bezier(.77,0,.175,1);}
+  .slide{min-width:100vw;width:100vw;height:100%;flex-shrink:0;flex-direction:column;align-items:center;justify-content:center;padding:0;overflow:hidden;display:flex;}
+  .slide::after{height:70px;}
+  .slide-content{flex:unset;width:100%;padding:0 28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;z-index:4;}
+  h1.hero-title{font-size:clamp(3.2rem,18vw,5.5rem);line-height:1.0;margin-bottom:16px;text-align:center;}
+  .hero-p{font-size:.9rem;margin-bottom:28px;max-width:100%;text-align:center;line-height:1.7;color:rgba(255,255,255,.88);}
+  .sarrow{display:none !important;}
+}
+
+/* Botón Ver más */
+.pill-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:fit-content;
+  height:50px;padding:0 36px;border-radius:30px;
+  font-weight:800;font-size:.9rem;cursor:pointer;
+  font-family:'Poppins',sans-serif;white-space:nowrap;
+  position:relative;background-color:var(--wine);
+  border:2px solid var(--wine);overflow:hidden;
+  color:#fff;transition:all .5s ease-in-out;
+  letter-spacing:2px;text-decoration:none;
+}
+.pill-btn::after{
+  content:'';position:absolute;left:0;top:0;
+  transition:all .5s ease-in-out;
+  background-color:#fff;border-radius:30px;
+  visibility:hidden;height:10px;width:10px;z-index:0;display:block;
+}
+.pill-btn:hover{color:var(--wine);border-color:var(--wine);}
+.pill-btn:hover::after{visibility:visible;transform:scale(100) translateX(2px);}
+@media(max-width:600px){.pill-btn{height:46px;padding:0 30px;font-size:.85rem;letter-spacing:1.5px;}}
+</style>
 </head>
 <body>
 
@@ -78,13 +167,25 @@
       <div class="slide-content">
         <h1 class="hero-title">Servicios<br>Para Eventos</h1>
         <p class="hero-p">Ofrecemos espacios para todo tipo de eventos, con un servicio gastronómico de calidad para hacer de cada ocasión un momento especial.</p>
-        <a href="#" class="pill-btn">
-          <span style="position:relative;z-index:1">Proximamente</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide slide-2">
+      <div class="hero-bg hero-bg-pan"></div>
+      <div class="slide-content">
+        <h1 class="hero-title">Descubre<br>Nuestra Panadería</h1>
+        <p class="hero-p">Aquí podrás ver los productos de la panadería. Las Delicias de la Niña María ofrece productos para toda ocasión: PANES, PASTELES, HOJALDRES, FAST FOOD, PIZZA, POSTRES, TORTAS Y PONQUES.</p>
+        <a href="index.html" class="pill-btn">
+          <span style="position:relative;z-index:1">Ver más</span>
         </a>
       </div>
     </div>
   </div>
+  <button class="sarrow sp" onclick="chSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+  <button class="sarrow sn" onclick="chSlide(1)"><i class="fas fa-chevron-right"></i></button>
 </section>
+
 
 <!-- ════════ PORTAFOLIO ════════ -->
 <section class="portafolio" id="portafolio" style="padding-top:70px;padding-bottom:70px;">
@@ -116,7 +217,7 @@
           </button>
         </div>
         <div class="espacio-media">
-          <img src="imagenes/auditorios/auditorio1.jpg" alt="Auditorio de la Niña Maria 1"/>
+          <img src="imagenes/auditorios/auditorio1.png" alt="Auditorio de la Niña Maria 1"/>
         </div>
       </div>
 
@@ -134,7 +235,7 @@
           </button>
         </div>
         <div class="espacio-media">
-          <img src="imagenes/auditorios/auditorio2.jpg" alt="Auditorio de la Niña Maria 2"/>
+          <img src="imagenes/auditorios/auditorio2.png" alt="Auditorio de la Niña Maria 2"/>
         </div>
       </div>
 
@@ -152,7 +253,7 @@
           </button>
         </div>
         <div class="espacio-media">
-          <img src="imagenes/auditorios/auditorio3.jpg" alt="Auditorio de la Niña Maria 3"/>
+          <img src="imagenes/auditorios/auditorio3.png" alt="Auditorio de la Niña Maria 3"/>
         </div>
       </div>
 
@@ -167,7 +268,7 @@
           </ul>
         </div>
         <div class="espacio-media">
-          <img src="imagenes/portada.jpg" alt="Auditorio de la Niña Maria Completo"/>
+          <img src="imagenes/auditorios/auditoriocompleto.png" alt="Auditorio de la Niña Maria Completo"/>
         </div>
       </div>
 
@@ -1089,7 +1190,7 @@
       <button type="button" class="tarifas-close" onclick="cerrarTarifas('auditorio1')" aria-label="Cerrar"><i class="fas fa-times"></i></button>
     </div>
     <div class="tarifas-media">
-      <img src="imagenes/auditorios/auditorio1.jpg" alt="Auditorio Niña Maria 1"/>
+      <img src="imagenes/auditorios/auditorio1.png" alt="Auditorio Niña Maria 1"/>
     </div>
     <div class="tarifas-body">
       <span class="tarifas-tag">Tarifas</span>
@@ -1157,7 +1258,7 @@
       <button type="button" class="tarifas-close" onclick="cerrarTarifas('auditorio2')" aria-label="Cerrar"><i class="fas fa-times"></i></button>
     </div>
     <div class="tarifas-media">
-      <img src="imagenes/auditorios/auditorio2.jpg" alt="Auditorio Niña Maria 2"/>
+      <img src="imagenes/auditorios/auditorio2.png" alt="Auditorio Niña Maria 2"/>
     </div>
     <div class="tarifas-body">
       <span class="tarifas-tag">Tarifas</span>
@@ -1225,7 +1326,7 @@
       <button type="button" class="tarifas-close" onclick="cerrarTarifas('auditorio3')" aria-label="Cerrar"><i class="fas fa-times"></i></button>
     </div>
     <div class="tarifas-media">
-      <img src="imagenes/auditorios/auditorio3.jpg" alt="Auditorio Niña Maria 3"/>
+      <img src="imagenes/auditorios/auditorio3.png" alt="Auditorio Niña Maria 3"/>
     </div>
     <div class="tarifas-body">
       <span class="tarifas-tag">Tarifas</span>
@@ -1328,11 +1429,10 @@
             <span style="font-family:'Poppins',sans-serif;font-style:normal;font-size:0.78rem;font-weight:400;color:rgba(255,255,255,.7);display:block;line-height:1;margin-left:33px;margin-top:-13px;">de La Niña Maria</span>
           </span>
         </a>
-        <p class="f-about">Proximamente descripcion </p>
+        <p class="f-about">Panadería y servicios para eventos: panes, pasteles, postres y espacios para celebrar tus momentos especiales con calidez y calidad.</p>
         <div class="f-social">
           <a href="https://www.facebook.com/share/1B95yuY3C2/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
           <a href="https://www.instagram.com/lasdeliciasdelaninamaria?igsh=MWJ1b2FtczN0dTcwMA=="><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-dribbble"></i></a>
           <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
@@ -1344,7 +1444,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-bottom"><div class="container">© 2026 <span>Las Delicias de La Niña Maria</span> All Rights Reserved.</div></div>
+  <div class="footer-bottom"><div class="container">© 2026 <span>Las Delicias de La Niña Maria</span> Todos los derechos reservados.</div></div>
 </footer>
 
 <script src="portafolio-script.js"></script>

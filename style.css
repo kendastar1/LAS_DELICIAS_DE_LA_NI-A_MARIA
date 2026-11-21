@@ -204,10 +204,11 @@ nav{display:flex;align-items:center;gap:2px;}
   background-position: center 30%;
 }
  
-/* Fondo café */
+/* Fondo eventos */
 .slide-2{
   background-image:
-  url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop');
+  url('imagenes/eventos.jpg');
+  background-position: center 55%;
 }
  
 /* Fondo tortas */
@@ -293,6 +294,19 @@ section{padding:90px 0;}
 .fresh-juice{background:#fff;}
 .juice-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
 .juice-image img{width:100%;object-fit:contain;border-radius:0;box-shadow:none;filter:drop-shadow(0 12px 30px rgba(114,47,55,.13));}
+/* Dos productos superpuestos e inclinados */
+.juice-stack{position:relative;width:100%;max-width:460px;height:520px;margin:0 auto;}
+.juice-stack .juice-photo{
+  position:absolute;width:62%;aspect-ratio:3/4;object-fit:cover;
+  border-radius:18px;border:8px solid #fff;filter:none;
+  box-shadow:0 18px 44px rgba(123,28,46,.25) !important;
+}
+.juice-stack .juice-photo-1{top:0;left:0;transform:rotate(-7deg);z-index:1;}
+.juice-stack .juice-photo-2{bottom:45px;right:0;transform:rotate(6deg);z-index:2;}
+@media(max-width:600px){
+  .juice-stack{max-width:340px;height:400px;}
+  .juice-stack .juice-photo-2{bottom:30px;}
+}
  
 /* ── BEVERAGES ── */
 .beverages{background:#fff;}

@@ -24,6 +24,7 @@ window.addEventListener('scroll', () => {
 });
 
 // Efecto parallax (sube/baja) del fondo de "Nuestros Auditorios" en móvil
+// (el fondo del inicio .hero-bg lo usa en PC y móvil, porque el slider lo mueve con transform y background-attachment:fixed no funciona ahí)
 // (en PC se usa background-attachment:fixed, que ya se ve bien)
 // Se usa un loop con requestAnimationFrame (no solo 'scroll') porque en
 // iOS Safari el evento scroll no se dispara de forma continua durante
@@ -36,7 +37,7 @@ window.addEventListener('scroll', () => {
   function loop(){
     bgs.forEach(bg => {
       const section = bg.parentElement;
-      if(mq.matches){
+      if(mq.matches || bg.classList.contains('hero-bg')){
         const rect = section.getBoundingClientRect();
         const maxOffset = rect.height * 0.32; // límite para no mostrar el borde
 
@@ -57,6 +58,42 @@ window.addEventListener('scroll', () => {
   }
 
   requestAnimationFrame(loop);
+})();
+
+// Hero Slider — igual al de index.html (2 slides, autoplay, flechas y swipe)
+let cur=0,tot=2,tmr;
+function chSlide(d){
+  const slides=document.getElementById('slides');
+  if(!slides) return;
+  cur=(cur+d+tot)%tot;
+  const isMob = window.innerWidth <= 600;
+  slides.style.transform = isMob
+    ? `translateX(-${cur*100}vw)`
+    : `translateX(-${cur*100}%)`;
+  clearInterval(tmr);
+  tmr=setInterval(()=>chSlide(1),5500);
+}
+tmr=setInterval(()=>chSlide(1),5500);
+
+// Swipe táctil en el hero (móvil)
+(function(){
+  const hero = document.querySelector('.hero');
+  if(!hero) return;
+  let startX = 0, startY = 0, dragging = false;
+  hero.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    dragging = true;
+  }, {passive:true});
+  hero.addEventListener('touchend', e => {
+    if(!dragging) return;
+    dragging = false;
+    const dx = startX - e.changedTouches[0].clientX;
+    const dy = startY - e.changedTouches[0].clientY;
+    if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)){
+      chSlide(dx > 0 ? 1 : -1);
+    }
+  }, {passive:true});
 })();
 
 // Menú móvil
