@@ -30,14 +30,14 @@ window.addEventListener('scroll', () => {
 // iOS Safari el evento scroll no se dispara de forma continua durante
 // el deslizamiento con inercia, y eso hacía que el efecto no se viera.
 (function(){
-  const bgs = document.querySelectorAll('.portafolio-bg, .coliseo-bg, .alimentos-bg, .hero-bg');
+  const bgs = document.querySelectorAll('.portafolio-bg, .coliseo-bg, .alimentos-bg');
   if(!bgs.length) return;
   const mq = window.matchMedia('(max-width:900px)');
 
   function loop(){
     bgs.forEach(bg => {
       const section = bg.parentElement;
-      if(mq.matches || bg.classList.contains('hero-bg')){
+      if(mq.matches){
         const rect = section.getBoundingClientRect();
         const maxOffset = rect.height * 0.32; // límite para no mostrar el borde
 
