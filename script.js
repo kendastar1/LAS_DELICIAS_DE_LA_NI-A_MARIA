@@ -154,7 +154,7 @@ document.addEventListener('click',e=>{
 function toggleMob(){const n=document.getElementById('mnav');n.classList.toggle('open');document.body.style.overflow=n.classList.contains('open')?'hidden':'';}
  
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){ closeS(); closeBebidasModal(); closeProdModal(); }
+  if(e.key==='Escape'){ closeS(); closeBebidasModal(); closeProdModal(); closeTortasModal(); }
 });
  
 // ── MODAL DETALLE PRODUCTO ──
@@ -366,4 +366,155 @@ document.querySelectorAll('.bev-card').forEach(card => {
       resultsBox.classList.remove('show');
     }
   });
+})();
+
+
+// ── PEDIDO POR WHATSAPP DESDE EL MODAL DE PRODUCTO ──
+const WA_NUMBER = '573232366808';
+
+function _toast(msg){
+  let t = document.getElementById('waToast');
+  if(!t){
+    t = document.createElement('div');
+    t.id = 'waToast';
+    t.style.cssText = 'position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#2a0a12;color:#fff;padding:12px 20px;border-radius:30px;font:500 .85rem Poppins,sans-serif;z-index:99999;max-width:90%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.3);transition:opacity .3s;opacity:0;pointer-events:none;';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(t._h);
+  t._h = setTimeout(()=>{ t.style.opacity = '0'; }, 9000);
+}
+
+// Devuelve la imagen como Blob PNG (convierte si hace falta)
+async function _imgBlob(url){
+  const res = await fetch(url);
+  let blob = await res.blob();
+  if(blob.type !== 'image/png'){
+    const bmp = await createImageBitmap(blob);
+    const cv = document.createElement('canvas');
+    cv.width = bmp.width; cv.height = bmp.height;
+    cv.getContext('2d').drawImage(bmp, 0, 0);
+    blob = await new Promise(r => cv.toBlob(r, 'image/png'));
+  }
+  return blob;
+}
+
+async function sendProdOrder(customText){
+  const name  = document.getElementById('prodModalName').textContent.trim();
+  const price = document.getElementById('prodModalPrice').textContent.trim();
+  const imgEl = document.getElementById('prodModalImg');
+  const imgUrl = imgEl.currentSrc || imgEl.src;
+
+  const text = (typeof customText === 'string' && customText)
+    ? customText
+    : '¡Hola! Quisiera hacer el siguiente pedido:\n\n'
+             + 'Producto: ' + name + '\n'
+             + 'Precio: ' + price + '\n\n'
+             + 'Quedo atento(a) a la confirmación. ¡Gracias!';
+  const waLink = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+
+  // Si la página está publicada en internet, la imagen se puede enviar como enlace
+  // y WhatsApp muestra la vista previa (miniatura) dentro del chat.
+  const absImg = new URL(imgUrl, location.href).href;
+  const isPublic = /^https?:$/.test(location.protocol)
+    && !/^(localhost|127\.|192\.168\.|10\.)/.test(location.hostname);
+  const waLinkImg = isPublic
+    ? 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text + '\n\n' + absImg)
+    : waLink;
+
+  const canShareFiles = !!(navigator.canShare && navigator.share &&
+    navigator.canShare({ files:[ new File([''], 'a.png', {type:'image/png'}) ] }));
+
+  // ── Móvil: hoja de compartir con la imagen adjunta + texto ──
+  if(canShareFiles){
+    try{
+      const blob = await _imgBlob(imgUrl);
+      const file = new File([blob], name.replace(/[^\w\-]+/g,'_') + '.png', {type:'image/png'});
+      if(navigator.canShare({ files:[file] })){
+        await navigator.share({ files:[file], text });
+        return;
+      }
+    }catch(err){
+      if(err && err.name === 'AbortError') return; // el usuario canceló
+    }
+    window.open(waLinkImg, '_blank', 'noopener');
+    return;
+  }
+
+  // ── Escritorio: copiar la imagen ANTES de abrir WhatsApp, y luego abrir el chat ──
+  // (si se abre primero la pestaña de WhatsApp, el navegador pierde el foco y bloquea el copiado)
+  let copiada = false;
+  if(!isPublic){
+    try{
+      if(navigator.clipboard && window.ClipboardItem){
+        await navigator.clipboard.write([ new ClipboardItem({ 'image/png': _imgBlob(imgUrl) }) ]);
+        copiada = true;
+      }
+    }catch(err){ copiada = false; }
+  }
+  _toast(copiada
+    ? 'Imagen copiada: en el chat de WhatsApp presiona Ctrl+V para adjuntarla'
+    : (isPublic ? 'Se abrió WhatsApp con la imagen' : 'Se abrió WhatsApp. No se pudo copiar la imagen automáticamente.'));
+  if(!window.open(waLinkImg, '_blank', 'noopener')){
+    location.href = waLinkImg; // por si el navegador bloquea la pestaña nueva
+  }
+}
+
+
+// ── MODAL TORTAS POR ENCARGO ──
+function _preventBgScrollTortas(e){
+  const body = document.querySelector('#tortasModal .modal-body');
+  if(body && body.contains(e.target)) return;
+  e.preventDefault();
+}
+function openTortasModal(){
+  const grid = document.getElementById('tortasModalGrid');
+  grid.innerHTML = '';
+  // Toma las tortas de la sección "Deliciosas Tortas" (si agregas una torta allá, aparece aquí sola)
+  document.querySelectorAll('#tortas .bev-card').forEach(card => {
+    const img   = card.querySelector('img');
+    const name  = card.querySelector('h6').textContent.trim();
+    const price = card.querySelector('span').textContent.trim();
+    const src   = img.currentSrc || img.src;
+
+    const item = document.createElement('div');
+    item.className = 'torta-opt';
+    item.innerHTML =
+      '<div class="torta-opt-img"><img loading="lazy" decoding="async" alt=""></div>' +
+      '<div class="torta-opt-body"><h6></h6><span></span>' +
+      '<button type="button" class="prod-order-btn torta-opt-btn">' +
+      '<i class="fab fa-whatsapp"></i> Pedir por WhatsApp</button></div>';
+    const im = item.querySelector('img');
+    im.src = src; im.alt = name;
+    item.querySelector('h6').textContent = name;
+    item.querySelector('span').textContent = price;
+    item.querySelector('button').addEventListener('click', () => pedirTorta(name, price, src));
+    grid.appendChild(item);
+  });
+  document.getElementById('tortasModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.addEventListener('touchmove', _preventBgScrollTortas, {passive:false});
+}
+function closeTortasModal(){
+  document.getElementById('tortasModal').classList.remove('open');
+  document.body.style.overflow = '';
+  document.removeEventListener('touchmove', _preventBgScrollTortas);
+}
+function pedirTorta(name, price, src){
+  // Reutiliza el envío por WhatsApp del modal de producto (con imagen)
+  const im = document.getElementById('prodModalImg');
+  im.src = src; im.alt = name;
+  document.getElementById('prodModalName').textContent  = name;
+  document.getElementById('prodModalPrice').textContent = price;
+  const text = '¡Hola! Quisiera hacer un encargo de la ' + name + ' (' + price + '). '
+             + 'Quedo atento(a) a su respuesta. ¡Gracias!';
+  sendProdOrder(text);
+}
+
+
+// ── AÑO AUTOMÁTICO EN EL PIE DE PÁGINA ──
+(function(){
+  const el = document.getElementById('anioActual');
+  if(el) el.textContent = new Date().getFullYear();
 })();

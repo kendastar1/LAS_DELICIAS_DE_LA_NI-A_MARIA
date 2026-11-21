@@ -141,3 +141,10 @@ function toggleMob(){
     }
   }
 })();
+
+
+// Año automático en el pie de página
+(function(){
+  const el = document.getElementById('anioActual');
+  if(el) el.textContent = new Date().getFullYear();
+})();

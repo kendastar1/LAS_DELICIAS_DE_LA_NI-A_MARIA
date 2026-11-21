@@ -565,7 +565,7 @@
       ¿Tienes una celebración especial, evento o simplemente un antojo particular? Elaboramos  tortas de panadería a tu medida.
       <strong style="color:var(--butter)">¡Escríbenos y cuéntanos tu idea!</strong>
     </p>
-    <a href="https://wa.me/573000000000" target="_blank" class="btn reveal d3" style="background:#fff;color:var(--wine);border-color:#fff;font-size:.9rem;height:54px;padding:0 38px;">
+    <a href="#" onclick="openTortasModal();return false;" class="btn reveal d3" style="background:#fff;color:var(--wine);border-color:#fff;font-size:.9rem;height:54px;padding:0 38px;">
       <span><i class="fab fa-whatsapp" style="font-size:1.1rem;margin-right:6px;"></i>Hacer mi encargo</span>
     </a>
   </div>
@@ -863,7 +863,7 @@
       
     </div>
   </div>
-  <div class="footer-bottom"><div class="container">© 2026 <span>Las Delicias de La Niña Maria</span> Todos los derechos reservados.</div></div>
+  <div class="footer-bottom"><div class="container">© <span id="anioActual" style="color:inherit">2026</span> <span>Las Delicias de La Niña Maria</span> Todos los derechos reservados.</div></div>
 </footer>
  
 <!-- SEARCH: inline en header -->
@@ -881,6 +881,23 @@
   </div>
 </div>
  
+<!-- ════════ MODAL TORTAS POR ENCARGO ════════ -->
+<div id="tortasModal" role="dialog" aria-modal="true" aria-labelledby="tortasModalTitle">
+  <div class="modal-backdrop" onclick="closeTortasModal()"></div>
+  <div class="modal-box tortas-modal-box">
+    <div class="modal-header">
+      <span class="modal-cursive">Elige tu favorita</span>
+      <h2 id="tortasModalTitle">Nuestras Tortas</h2>
+      <div class="ornament"><i class="fas fa-birthday-cake"></i></div>
+      <button class="modal-close" onclick="closeTortasModal()" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <p class="tortas-modal-hint">Selecciona la torta que te gusta y te llevamos a WhatsApp con tu mensaje listo para enviar.</p>
+      <div class="tortas-modal-grid" id="tortasModalGrid"></div>
+    </div>
+  </div>
+</div>
+
 <!-- ════════ MODAL BEBIDAS ════════ -->
 <div id="bebidasModal" role="dialog" aria-modal="true" aria-labelledby="modalBevTitle">
   <div class="modal-backdrop" onclick="closeBebidasModal()"></div>
@@ -1126,6 +1143,6 @@
   <i class="fab fa-whatsapp"></i>
 </a>
  
-<script src="script.js"></script>
+<script src="script.js" charset="UTF-8"></script>
 </body>
 </html>
