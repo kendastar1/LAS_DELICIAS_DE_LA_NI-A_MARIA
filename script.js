@@ -57,9 +57,19 @@
 })();
  
 // Scroll
-window.addEventListener('scroll',()=>{
-  document.getElementById('hdr').classList.toggle('scrolled',scrollY>60);
-});
+(function(){
+  const hdr=document.getElementById('hdr');
+  let ticking=false,last=null;
+  function upd(){
+    const s=window.scrollY>60;
+    if(s!==last){ hdr.classList.toggle('scrolled',s); last=s; }
+    ticking=false;
+  }
+  window.addEventListener('scroll',()=>{
+    if(!ticking){ ticking=true; requestAnimationFrame(upd); }
+  },{passive:true});
+  upd();
+})();
  
 // Hero Slider — autoplay activo con 2 slides
 let cur=0,tot=2,tmr;
@@ -100,7 +110,11 @@ tmr=setInterval(()=>chSlide(1),5500);
 // Testimonials
 let ct=0;
 function goT(i){ct=i;document.getElementById('ttrack').style.transform=`translateX(-${i*100}%)`;document.querySelectorAll('.tdot').forEach((d,j)=>d.classList.toggle('active',j===i));}
-setInterval(()=>goT((ct+1)%3),5500);
+setInterval(()=>{ if(!document.hidden) goT((ct+1)%3); },5500);
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){ clearInterval(tmr); }
+  else { clearInterval(tmr); tmr=setInterval(()=>chSlide(1),5500); }
+});
  
 // Search inline
 function toggleS(){
