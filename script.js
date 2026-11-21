@@ -489,7 +489,7 @@ function openTortasModal(){
     im.src = src; im.alt = name;
     item.querySelector('h6').textContent = name;
     item.querySelector('span').textContent = price;
-    item.querySelector('button').addEventListener('click', () => pedirTorta(name, price, src));
+    item.querySelector('button').addEventListener('click', () => pedirTorta(name, price));
     grid.appendChild(item);
   });
   document.getElementById('tortasModal').classList.add('open');
@@ -501,24 +501,10 @@ function closeTortasModal(){
   document.body.style.overflow = '';
   document.removeEventListener('touchmove', _preventBgScrollTortas);
 }
-function pedirTorta(name, price, src){
+function pedirTorta(name, price){
   const text = '¡Hola! Quisiera hacer un encargo de la ' + name + ' (' + price + '). '
              + 'Quedo atento(a) a su respuesta. ¡Gracias!';
-
-  // WhatsApp no permite adjuntar imágenes desde un enlace; lo que sí hace es mostrar
-  // automáticamente la vista previa (imagen) de cualquier enlace que vaya en el mensaje.
-  // Por eso se agrega al final la dirección de la imagen: en el chat aparece la foto
-  // y debajo el texto del pedido, sin tener que compartir nada manualmente.
-  const absImg = new URL(src, location.href).href;
-  const isPublic = /^https?:$/.test(location.protocol)
-    && !/^(localhost|127\.|192\.168\.|10\.)/.test(location.hostname);
-
-  const msg = isPublic ? (text + '\n\n' + absImg) : text;
-  const waLink = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
-
-  if(!isPublic){
-    _toast('La imagen se mostrará en el chat cuando la página esté publicada en internet');
-  }
+  const waLink = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
   if(!window.open(waLink, '_blank', 'noopener')){
     location.href = waLink; // por si el navegador bloquea la pestaña nueva
   }
