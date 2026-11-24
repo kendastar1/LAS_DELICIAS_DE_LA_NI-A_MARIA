@@ -255,7 +255,7 @@ h1.hero-title{
 /* ── COLISEO (banner con fondo e igual efecto parallax que "Nuestros Auditorios") ── */
 .coliseo-banner{
   position:relative;
-  background-image:url('imagenes/portada.jpg');
+  background-image:url('imagenes/coliseo.jpg');
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
@@ -287,7 +287,7 @@ h1.hero-title{
     position:absolute;
     top:0;left:0;
     width:100%;height:100%;
-    background-image:url('imagenes/portada.jpg');
+    background-image:url('imagenes/coliseo.jpg');
     background-size:cover;
     background-position:center;
     z-index:0;
