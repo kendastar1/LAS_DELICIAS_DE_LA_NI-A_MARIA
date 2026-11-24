@@ -30,7 +30,8 @@ window.addEventListener('scroll', () => {
 // iOS Safari el evento scroll no se dispara de forma continua durante
 // el deslizamiento con inercia, y eso hacía que el efecto no se viera.
 (function(){
-  const bgs = document.querySelectorAll('.portafolio-bg, .coliseo-bg, .alimentos-bg');
+  // El Coliseo ya no se incluye: en móvil su fondo queda quieto (sin parallax) y en PC usa background-attachment:fixed
+  const bgs = document.querySelectorAll('.portafolio-bg, .alimentos-bg');
   if(!bgs.length) return;
   const mq = window.matchMedia('(max-width:900px)');
 

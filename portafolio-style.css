@@ -616,3 +616,31 @@ footer{background:#2a0a12;color:rgba(255,255,255,.72);}
   section{padding:55px 0;}
   .footer-top{grid-template-columns:1fr;gap:24px;}
 }
+
+/* ── MODALES DE TARIFAS (auditorios y coliseo) EN MÓVIL: filas en formato tarjeta ──
+   La tabla de 3 columnas se partía en muchas líneas. Ahora cada fila muestra
+   la descripción arriba (ancho completo) y debajo el tiempo (izq.) y el precio (der.). */
+@media(max-width:640px){
+  #auditorio1 .tarifas-table,#auditorio2 .tarifas-table,#auditorio3 .tarifas-table,#coliseo .tarifas-table,
+  #auditorio1 .tarifas-table tbody,#auditorio2 .tarifas-table tbody,#auditorio3 .tarifas-table tbody,#coliseo .tarifas-table tbody{
+    display:block;width:100%;
+  }
+  #auditorio1 .tarifas-table thead,#auditorio2 .tarifas-table thead,#auditorio3 .tarifas-table thead,#coliseo .tarifas-table thead{display:none;}
+  #auditorio1 .tarifas-table tbody tr,#auditorio2 .tarifas-table tbody tr,#auditorio3 .tarifas-table tbody tr,#coliseo .tarifas-table tbody tr{
+    display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px 12px;
+    padding:16px 0;border-bottom:1px solid var(--border);
+  }
+  #auditorio1 .tarifas-table tbody tr:last-child,#auditorio2 .tarifas-table tbody tr:last-child,#auditorio3 .tarifas-table tbody tr:last-child,#coliseo .tarifas-table tbody tr:last-child{border-bottom:none;}
+  #auditorio1 .tarifas-table tbody td,#auditorio2 .tarifas-table tbody td,#auditorio3 .tarifas-table tbody td,#coliseo .tarifas-table tbody td{
+    display:block;padding:0;border:none;font-size:.92rem;
+  }
+  #auditorio1 .tarifas-table tbody td:first-child,#auditorio2 .tarifas-table tbody td:first-child,#auditorio3 .tarifas-table tbody td:first-child,#coliseo .tarifas-table tbody td:first-child{
+    grid-column:1 / -1;font-weight:500;color:var(--dark);line-height:1.5;
+  }
+  #auditorio1 .tarifas-table tbody td:nth-child(2),#auditorio2 .tarifas-table tbody td:nth-child(2),#auditorio3 .tarifas-table tbody td:nth-child(2),#coliseo .tarifas-table tbody td:nth-child(2){
+    font-size:.85rem;color:var(--gray);white-space:nowrap;
+  }
+  #auditorio1 .tarifas-table tbody td:last-child,#auditorio2 .tarifas-table tbody td:last-child,#auditorio3 .tarifas-table tbody td:last-child,#coliseo .tarifas-table tbody td:last-child{
+    text-align:right;font-size:1rem;
+  }
+}
